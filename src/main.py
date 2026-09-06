@@ -22,12 +22,6 @@ def main():
 
     assign_timing_groups(notes_with_chords, timing_changes)
 
-    for timing_change in timing_changes:
-        print(timing_change)
-
-    for note in notes_with_chords:
-        print(note
-        )
     generate_note_matrix(notes_with_chords, timing_changes, key_count)
 
     new_map = build_new_map(normal_lines, timing_points, notes_with_chords)
