@@ -52,6 +52,7 @@ class Note:
         self.key_count = key_count
 
         self.timing_group: int | None = None
+        self.delay:int | None = None
 
     @override
     def __repr__(self):

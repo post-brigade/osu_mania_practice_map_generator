@@ -1,7 +1,7 @@
 from src.classes import LongNote, Note, TimingPoint
 
 
-def group_notes_by_timing_changes(
+def assign_timing_groups(
     notes: list[Note | LongNote],
     timing_changes: list[TimingPoint]
 ) -> list[list[Note | LongNote]]:

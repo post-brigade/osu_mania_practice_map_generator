@@ -1,5 +1,3 @@
-from dis import Instruction
-
 from src.classes import LongNote, Note, TimingPoint
 
 from .generate_note import generate_note
@@ -9,9 +7,11 @@ def generate_notes_with_timing_points(timing_changes: list[TimingPoint], notes: 
 
     # starts at a 16th note
     time_tick = timing_changes[0].beat_length / 4
+
     new_notes: list[Note] = []
     banned_columns = set()
     generate_notes = False
+
     #pulls instruction and timestamp from note: (instruction, time stamp)
     input_from_notes: list[tuple] = []
 

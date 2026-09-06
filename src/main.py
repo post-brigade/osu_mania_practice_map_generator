@@ -1,17 +1,11 @@
-from src.classes import LongNote, Note, TimingPoint
 from src.functions import (
     add_chords,
+    assign_timing_groups,
     build_new_map,
-    create_long_note,
-    create_note,
-    create_timing_point,
     generate_note_matrix,
     generate_notes_with_timing_points,
     get_timing_changes,
-    group_notes_by_timing_changes,
-    randomize_notes,
     read_map,
-    to_lines,
     write_map,
 )
 
@@ -23,13 +17,17 @@ def main():
 
     normal_lines, timing_points, notes = read_map(map_path, key_count)
     timing_changes = get_timing_changes(timing_points)
+    generated_notes = generate_notes_with_timing_points(timing_changes, notes, key_count)
+    notes_with_chords = add_chords(generated_notes, key_count)
 
-    # random_notes = randomize_notes(notes, key_count)
+    assign_timing_groups(notes_with_chords, timing_changes)
 
-    random_notes = generate_notes_with_timing_points(timing_changes, notes, key_count)
-    timing_note_groups = group_notes_by_timing_changes(random_notes, timing_changes)
-    notes_with_chords = add_chords(random_notes, key_count)
+    for timing_change in timing_changes:
+        print(timing_change)
 
+    for note in notes_with_chords:
+        print(note
+        )
     generate_note_matrix(notes_with_chords, timing_changes, key_count)
 
     new_map = build_new_map(normal_lines, timing_points, notes_with_chords)
