@@ -6,20 +6,14 @@ from .generate_note import generate_note
 def generate_notes_with_timing_points(timing_changes: list[TimingPoint], notes: list[Note], key_count: int):
 
     # starts at a 16th note
-    time_tick = timing_changes[0].beat_length / 4
+    time_tick = timing_changes[0].active_beat_length / 4
 
     new_notes: list[Note] = []
     banned_columns = set()
-    generate_notes = False
-
-    #pulls instruction and timestamp from note: (instruction, time stamp)
-    input_from_notes: list[tuple] = []
-
-    for note in notes:
-        input_from_notes.append((note.column, note.time))
 
     for i in range(len(timing_changes)):
         current_time = timing_changes[i].time
+        time_tick = timing_changes[i].active_beat_length / 4
 
         while(
             current_time >= timing_changes[i].time

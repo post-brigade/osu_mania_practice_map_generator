@@ -23,20 +23,16 @@ def main():
 
     print(bpm_instructions)
 
-    timing_changes = get_timing_changes(timing_points)
+    timing_changes_from_map = get_timing_changes(timing_points)
 
-    final_timing_changes = note_instructions_to_timing_changes(timing_changes, bpm_instructions)
+    timing_changes_with_bpm_changes = note_instructions_to_timing_changes(timing_changes_from_map, bpm_instructions)
 
-    for change in final_timing_changes:
-        print(change)
-        print(change.time_multiplier)
-
-    generated_notes = generate_notes_with_timing_points(timing_changes, notes, key_count)
+    generated_notes = generate_notes_with_timing_points(timing_changes_with_bpm_changes, notes, key_count)
     notes_with_chords = add_chords(generated_notes, key_count)
 
-    assign_timing_groups(notes_with_chords, timing_changes)
+    assign_timing_groups(notes_with_chords, timing_changes_with_bpm_changes)
 
-    # generate_note_matrix(notes_with_chords, timing_changes, key_count)
+    generate_note_matrix(notes_with_chords, timing_changes_with_bpm_changes, key_count)
 
     new_map = build_new_map(normal_lines, timing_points, notes_with_chords)
     write_map(new_map, new_map_path)
