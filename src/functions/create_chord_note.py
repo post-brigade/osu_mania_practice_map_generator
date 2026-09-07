@@ -2,7 +2,7 @@ import copy
 
 from src.classes import LongNote, Note
 
-from .note_helpers import column_to_x, random_column
+from .column_and_bpm_helpers import column_to_x, random_column
 
 
 def create_chord_note(note: Note | LongNote, banned_columns: set[int], key_count = 7) -> Note | LongNote:

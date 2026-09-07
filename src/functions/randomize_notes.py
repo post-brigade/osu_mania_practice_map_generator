@@ -1,6 +1,6 @@
 from src.classes import LongNote, Note, TimingPoint
 
-from .note_helpers import column_to_x, random_column
+from .column_and_bpm_helpers import column_to_x, random_column
 
 
 def randomize_notes(notes: list[Note | LongNote], key_count) -> list[Note | LongNote]:

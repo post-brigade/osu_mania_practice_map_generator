@@ -1,8 +1,8 @@
 from src.classes import LongNote, Note, TimingPoint
 
+from .column_and_bpm_helpers import column_to_x, random_column
 from .create_long_note import create_long_note
 from .create_note import create_note
-from .note_helpers import column_to_x, random_column
 
 
 def generate_note(time:float, type:int, key_count:int, banned_columns: set[int]) -> Note:
