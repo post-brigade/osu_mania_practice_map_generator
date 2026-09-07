@@ -12,6 +12,10 @@ class TimingPoint:
         uninherited: int,
         effects: int,
     ):
+        self.timing_group: int | None = None
+        self.is_generated: bool = False
+        self.time_multiplier: float = 1
+
         self.time = time
         self.beat_length = beat_length
         self.meter = meter
@@ -22,12 +26,17 @@ class TimingPoint:
         self.effects = effects
         self.bpm: float = 1 / beat_length * 1000 * 60
 
-        self.timing_group: int | None = None
+        self.active_beat_length = self.beat_length
+
+
+    def update_beat_length(self):
+        self.active_beat_length = self.beat_length * self.time_multiplier
+
 
     @override
     def __repr__(self):
         if self.uninherited == 1:
-                return f"timing point: group: {self.timing_group} time:{round(self.time)} bpm: {round(self.bpm, 2)} meter: {self.meter} beat length: {round(self.beat_length)}"
+                return f"timing point: group: {self.timing_group} time:{round(self.time)} bpm: {round(self.bpm, 2)} meter: {self.meter} beat length: {round(self.active_beat_length)}"
         else:
             return f"timing point: time:{round(self.time)} meter: {self.meter}"
 
