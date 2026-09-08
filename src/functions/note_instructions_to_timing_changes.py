@@ -121,7 +121,6 @@ def note_instructions_to_timing_changes(
 
         if i > 0:
             if sorted_timing_points[i].time == final_timing_points[-1].time:
-                # Update/override existing point properties if necessary
                 final_timing_points[-1] = sorted_timing_points[i]
             else:
                 sorted_timing_points[i].time_multiplier = final_timing_points[-1].time_multiplier
