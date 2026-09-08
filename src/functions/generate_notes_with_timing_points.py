@@ -4,8 +4,6 @@ from .generate_note import generate_note
 
 
 def generate_notes_with_timing_points(timing_changes: list[TimingPoint], notes: list[Note], key_count: int):
-    for i in range(len(timing_changes)):
-        print(f"Timing Point {i}: time={timing_changes[i].time}, multiplier={timing_changes[i].time_multiplier}, active_beat_length={timing_changes[i].active_beat_length}, time_tick={timing_changes[i].active_beat_length / 4}")
     # helps with floating point stuff
     EPSILON = 1e-4
 
