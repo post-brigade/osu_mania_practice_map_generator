@@ -17,7 +17,7 @@ def notes_to_note_instructions(notes: list[Note]) -> tuple[instruction_list, ins
                 start_stop_instructions.append((note.column,note.time))
                 start = False
 
-        if note.column == 3 or note.column == 3:
+        if note.column == 3 or note.column == 4:
             bpm_instructions.append((note.column,note.time))
 
     return start_stop_instructions, bpm_instructions

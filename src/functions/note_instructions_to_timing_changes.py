@@ -72,12 +72,11 @@ def note_instructions_to_timing_changes(
 
 
     for i in range(len(sorted_timing_points)):
-        if i == 0 and (sorted_timing_points[i].is_bpm_change or sorted_timing_points[i].is_start_stop):
-            raise ValueError("instruction before timing point")
-
         if i == 0:
-            final_timing_points.append(sorted_timing_points[i])
-            continue
+                if sorted_timing_points[i].is_bpm_change or sorted_timing_points[i].is_start_stop:
+                    raise ValueError("instruction before timing point")
+                final_timing_points.append(sorted_timing_points[i])
+                continue
 
         if i > 0 and sorted_timing_points[i].is_bpm_change:
             time = sorted_timing_points[i].time
@@ -85,6 +84,7 @@ def note_instructions_to_timing_changes(
 
             if sorted_timing_points[i].time == final_timing_points[-1].time:
                 final_timing_points[-1].time_multiplier *= multiplier
+                final_timing_points[-1].update_beat_length()
                 continue
 
             sorted_timing_points[i] = copy.copy(final_timing_points[-1])
@@ -100,9 +100,10 @@ def note_instructions_to_timing_changes(
         if i > 0 and sorted_timing_points[i].is_start_stop:
             time = sorted_timing_points[i].time
 
-            if sorted_timing_points[i].time == sorted_timing_points[i - 1].time:
+            if sorted_timing_points[i].time == final_timing_points[-1].time:
                 final_timing_points[-1].is_start_stop = True
                 final_timing_points[-1].generate_notes = not final_timing_points[-1].generate_notes
+                final_timing_points[-1].update_beat_length()
 
                 continue
 
@@ -119,10 +120,13 @@ def note_instructions_to_timing_changes(
             continue
 
         if i > 0:
-            sorted_timing_points[i].time_multiplier = final_timing_points[-1].time_multiplier
-            sorted_timing_points[i].generate_notes = final_timing_points[-1].generate_notes
-            sorted_timing_points[i].update_beat_length()
-
-            final_timing_points.append(sorted_timing_points[i])
+            if sorted_timing_points[i].time == final_timing_points[-1].time:
+                # Update/override existing point properties if necessary
+                final_timing_points[-1] = sorted_timing_points[i]
+            else:
+                sorted_timing_points[i].time_multiplier = final_timing_points[-1].time_multiplier
+                sorted_timing_points[i].generate_notes = final_timing_points[-1].generate_notes
+                sorted_timing_points[i].update_beat_length()
+                final_timing_points.append(sorted_timing_points[i])
 
     return final_timing_points

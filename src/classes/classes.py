@@ -69,7 +69,7 @@ class Note:
 
     @override
     def __repr__(self):
-        return f"normal note: group: {self.timing_group} column:{self.column} time: {round(self.time)}"
+        return f"normal note: x: {self.x} column:{self.column} time: {round(self.time)}"
 
 
 class LongNote(Note):
