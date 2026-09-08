@@ -13,8 +13,12 @@ class TimingPoint:
         effects: int,
     ):
         self.timing_group: int | None = None
-        self.is_generated: bool = False
+
+        self.is_bpm_change: bool = False
         self.time_multiplier: float = 1
+
+        self.is_start_stop: bool = False
+        self.generate_notes: bool = False
 
         self.time = time
         self.beat_length = beat_length
@@ -36,7 +40,7 @@ class TimingPoint:
     @override
     def __repr__(self):
         if self.uninherited == 1:
-                return f"timing point: group: {self.timing_group} time:{round(self.time)} bpm: {round(self.bpm, 2)} meter: {self.meter} beat length: {round(self.active_beat_length)}"
+                return f"timing point: group: {self.timing_group} time:{round(self.time)} bpm: {round(self.bpm, 2)} meter: {self.meter} beat length: {round(self.active_beat_length)} generate notes: {self.generate_notes} is start/stop: {self.is_start_stop}"
         else:
             return f"timing point: time:{round(self.time)} meter: {self.meter}"
 

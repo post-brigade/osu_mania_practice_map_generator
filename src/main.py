@@ -19,20 +19,24 @@ def main():
     new_map_path = "./maps/hazy_moon_night/hazy_test_output.osu"
 
     normal_lines, timing_points, notes = read_map(map_path, key_count)
-    start_stop_instruction, bpm_instructions = notes_to_note_instructions(notes)
+    start_stops, bpm_changes = notes_to_note_instructions(notes)
 
-    print(bpm_instructions)
+    print(start_stops)
+    print(bpm_changes)
 
     timing_changes_from_map = get_timing_changes(timing_points)
 
-    timing_changes_with_bpm_changes = note_instructions_to_timing_changes(timing_changes_from_map, bpm_instructions)
+    timing_changes_with_instructions = note_instructions_to_timing_changes(timing_changes_from_map, start_stops + bpm_changes)
 
-    generated_notes = generate_notes_with_timing_points(timing_changes_with_bpm_changes, notes, key_count)
+    for change in timing_changes_with_instructions:
+        print(change)
+
+    generated_notes = generate_notes_with_timing_points(timing_changes_with_instructions , notes, start_stops, key_count)
     notes_with_chords = add_chords(generated_notes, key_count)
 
-    assign_timing_groups(notes_with_chords, timing_changes_with_bpm_changes)
+    assign_timing_groups(notes_with_chords, timing_changes_with_instructions)
 
-    generate_note_matrix(notes_with_chords, timing_changes_with_bpm_changes, key_count)
+    # generate_note_matrix(notes_with_chords, timing_changes_with_instructions, key_count)
 
     new_map = build_new_map(normal_lines, timing_points, notes_with_chords)
     write_map(new_map, new_map_path)
