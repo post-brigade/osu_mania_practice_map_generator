@@ -20,7 +20,7 @@ Notes in column:
   
 Currently only generates dense 7 key chordstream; need to start with 7 key map.
 
-Generates sample of patterning in console.
+Generates sample of map in console.
 
 Patterning is currently based on 4/4 meter; odd meters will have accents in weird spots.
 
