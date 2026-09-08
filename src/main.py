@@ -23,8 +23,6 @@ def main():
 
     start_stops, bpm_changes = notes_to_note_instructions(notes)
 
-    print(bpm_changes)
-
     timing_changes_from_map = get_timing_changes(timing_points)
 
     timing_changes_with_instructions = note_instructions_to_timing_changes(timing_changes_from_map, start_stops + bpm_changes)  # works
@@ -40,9 +38,6 @@ def main():
 
     new_map = build_new_map(normal_lines, timing_changes_with_instructions, notes_with_chords)
     write_map(new_map, new_map_path)
-
-    for i in range (1,8):
-        print(column_to_x(i, 7))
 
 if __name__ == "__main__":
     main()

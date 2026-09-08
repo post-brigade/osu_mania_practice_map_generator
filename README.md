@@ -1,5 +1,6 @@
 For now only hard-coded to read/write files manually set in main().
 
+
 Works off a timed map and reads notes on the map as instructions by column.
 
 Note generation starts out off.
@@ -19,6 +20,8 @@ Notes in column:
   4: halve bpm
   
 Currently only generates dense 7 key chordstream; need to start with 7 key map.
+
+Generates sample of patterning in console.
 
 Patterning is currently based on 4/4 meter; odd meters will have accents in weird spots.
 

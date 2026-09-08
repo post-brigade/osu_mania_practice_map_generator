@@ -31,6 +31,8 @@ def generate_note_matrix(notes: list[Note | LongNote], timing_changes: list[Timi
     barline_note = f"{GRAY}▁{RESET}▆▆▆{GRAY}▁{RESET}"
 
     for i in range(len(notes)):
+        if time_index >= 32:
+            break
         current_note = notes[i]
         note_matrix[time_index][current_note.column - 1] = barline_note if is_barline else note
 
