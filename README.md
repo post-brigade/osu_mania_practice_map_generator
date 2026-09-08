@@ -1,6 +1,5 @@
 For now only hard-coded to read/write files manually set in main().
 
-
 Works off a timed map and reads notes on the map as instructions by column.
 
 Note generation starts out off.
