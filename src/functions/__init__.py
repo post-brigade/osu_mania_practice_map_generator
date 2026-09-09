@@ -1,5 +1,4 @@
 from .add_chords import add_chords
-from .assign_timing_groups import assign_timing_groups
 from .build_new_map import build_new_map
 from .column_and_bpm_helpers import (
     beat_length_to_bpm,

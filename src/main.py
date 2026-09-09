@@ -15,14 +15,16 @@ from src.functions import (
 
 def main():
     key_count = 7
-    map_path = "/mnt/c/Users/postb/Desktop/hazy_moon_night/hazy_test.osu"
-    new_map_path = "/mnt/c/Users/postb/Desktop/hazy_moon_night/hazy_test_output.osu"
+    map_path = "./testing/maps/read/hazy_test_notes_to_note_instructions.osu"
+    new_map_path = "./testing/maps/write/hazy_test_notes_to_note_instructions.osu"
 
-    normal_lines, timing_points, notes = read_map(map_path, key_count)
+    normal_lines, timing_points, notes = read_map(map_path, key_count) # tested
 
-    note_instructions = notes_to_note_instructions(notes)
+    sorted_notes = sorted(notes, key = lambda note: (note.time, note.column))
 
-    timing_changes_from_map = get_timing_changes(timing_points)
+    note_instructions = notes_to_note_instructions(sorted_notes) # tested
+
+    timing_changes_from_map = get_timing_changes(timing_points) # tested
 
     timing_changes_with_instructions = note_instructions_to_timing_changes(timing_changes_from_map, note_instructions)  # works
 
