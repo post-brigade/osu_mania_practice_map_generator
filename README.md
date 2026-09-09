@@ -1,4 +1,5 @@
-**remember to convert all the timing stuff to microsecond ints at some point**
+**remember to convert all the timing stuff to microsecond ints at some point\n**
+
 **clean up note_instructions_to_timing_changes**
 
 For now only hard-coded to read/write files manually set in main().
