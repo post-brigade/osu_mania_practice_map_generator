@@ -1,6 +1,5 @@
 from src.functions import (
     add_chords,
-    assign_timing_groups,
     build_new_map,
     column_to_x,
     generate_note_matrix,
@@ -26,9 +25,9 @@ def main():
 
     timing_changes_from_map = get_timing_changes(timing_points) # tested
 
-    timing_changes_with_instructions = note_instructions_to_timing_changes(timing_changes_from_map, note_instructions)  # works
+    timing_changes_with_instructions = note_instructions_to_timing_changes(timing_changes_from_map, note_instructions)  # tested
 
-    generated_notes = generate_notes_with_timing_points(timing_changes_with_instructions, notes, key_count)
+    generated_notes = generate_notes_with_timing_points(timing_changes_with_instructions, notes[-1], key_count) # tested
 
     notes_with_chords = add_chords(generated_notes, key_count)
 

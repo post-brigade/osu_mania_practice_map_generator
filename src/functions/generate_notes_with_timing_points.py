@@ -5,7 +5,7 @@ from src.classes import LongNote, Note, TimingPoint
 from .generate_note import generate_note
 
 
-def generate_notes_with_timing_points(timing_changes: list[TimingPoint], notes: list[Note], key_count: int):
+def generate_notes_with_timing_points(timing_changes: list[TimingPoint], final_note: Note, key_count: int):
     time_tick = timing_changes[0].active_beat_length / 4
 
     new_notes: list[Note] = []
@@ -23,7 +23,7 @@ def generate_notes_with_timing_points(timing_changes: list[TimingPoint], notes: 
             if i < len(timing_changes) - 1 else
 
             (current_time > timing_changes[i].time or math.isclose(current_time, timing_changes[i].time, abs_tol=0.001))
-            and (current_time < notes[-1].time or math.isclose(current_time, notes[-1].time, abs_tol=0.001))
+            and (current_time < final_note.time or math.isclose(current_time, final_note.time, abs_tol=0.001))
         ):
             if generate_notes:
                 note = generate_note(current_time, 1, key_count, banned_columns)
