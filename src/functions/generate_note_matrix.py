@@ -11,10 +11,9 @@ def create_row(is_barline: bool, key_count: int, barline_color, default_color) -
     return row
 
 
-def generate_note_matrix(notes: list[Note | LongNote], timing_changes: list[TimingPoint], key_count: int):
+def generate_note_matrix(notes: list[Note | LongNote], timing_changes: list[TimingPoint], should_print:bool, key_count: int):
     if not notes:
         return
-
 
     GRAY = rgb_to_console_color(100,100,100)
     RESET = "\033[0m"
@@ -41,6 +40,10 @@ def generate_note_matrix(notes: list[Note | LongNote], timing_changes: list[Timi
             is_barline = time_index % 8 == 0
             note_matrix.append(create_row(is_barline, key_count, GRAY, RESET))
 
-    for i in range (len(note_matrix) - 1, -1, -1):
-        print("".join(note_matrix[i]))
-        print()
+    if should_print:
+        for i in range (len(note_matrix) - 1, -1, -1):
+            print("".join(note_matrix[i]))
+            print()
+
+    # for testing
+    return note_matrix

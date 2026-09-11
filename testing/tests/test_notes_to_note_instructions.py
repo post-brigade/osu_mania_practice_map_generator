@@ -6,8 +6,8 @@ from src.functions import *
 
 TESTING_HOME_DIR = Path(__file__).resolve().parent.parent
 TEST_DIR = TESTING_HOME_DIR  / "tests"
-MAP_INPUT_DIR = TESTING_HOME_DIR  / "maps" / "read"
-MAP_OUTPUT_DIR= TESTING_HOME_DIR  / "maps" / "write"
+MAP_INPUT_DIR = TESTING_HOME_DIR  / "test_maps" / "read"
+MAP_OUTPUT_DIR= TESTING_HOME_DIR  / "test_maps" / "write"
 KEY_COUNT = 7
 
 class Test(unittest.TestCase):
@@ -15,7 +15,7 @@ class Test(unittest.TestCase):
     def test_a_test_all_instruction_types(self):
         print("\nnotes_to_note_instructions tests")
 
-        map_path = MAP_INPUT_DIR / "hazy_test_notes_to_note_instructions.osu"
+        map_path = MAP_INPUT_DIR / "test_notes_to_note_instructions" / "test_a.osu"
         normal_lines, timing_points, notes = read_map(str(map_path), KEY_COUNT)
         instructions = notes_to_note_instructions(notes)
 

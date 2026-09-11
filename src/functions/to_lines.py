@@ -30,9 +30,13 @@ def long_note_to_line(note: LongNote) -> list [str]:
     return note_line
 
 
-def timing_point_to_line(timing_point: TimingPoint) -> list[str]:
-    time = str(timing_point.time)
-    beat_length = str(timing_point.beat_length)
+def timing_point_to_line(timing_point: TimingPoint, round_time: bool = False) -> list[str]:
+    if round_time:
+        time = str(round(timing_point.time))
+        beat_length = str(round(timing_point.beat_length))
+    else:
+        time = str(timing_point.time)
+        beat_length = str(timing_point.beat_length)
     meter = str(timing_point.meter)
     sample_set = str(timing_point.sample_set)
     sample_index = str(timing_point.sample_index)
@@ -46,7 +50,7 @@ def timing_point_to_line(timing_point: TimingPoint) -> list[str]:
     return timing_point_line
 
 
-def to_lines(notes_points: list[Note | LongNote] | list[TimingPoint]):
+def to_lines(notes_points: list[Note | LongNote] | list[TimingPoint], round_time: bool = False):
     line_list: list[list[str]] = []
 
     for note_or_point in notes_points:
@@ -61,7 +65,7 @@ def to_lines(notes_points: list[Note | LongNote] | list[TimingPoint]):
                 line_list.append(note_line)
 
             case TimingPoint():
-                timing_point_line = timing_point_to_line(note_or_point)
+                timing_point_line = timing_point_to_line(note_or_point, round_time)
                 line_list.append(timing_point_line)
 
             case _:

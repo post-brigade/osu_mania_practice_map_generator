@@ -6,9 +6,11 @@ from .to_lines import to_lines
 def build_new_map(
     normal_lines: list[list[str]],
     timing_points: list[TimingPoint],
-    notes: list[Note | LongNote]
+    notes: list[Note | LongNote],
+    round_time:bool = False
 ) -> str:
-    timing_point_lines = to_lines(timing_points)
+
+    timing_point_lines = to_lines(timing_points, round_time)
     note_lines = to_lines(notes)
     new_lines: list[list[str]] = []
 

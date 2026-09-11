@@ -14,8 +14,9 @@ from src.functions import (
 
 def main():
     key_count = 7
-    map_path = "./testing/maps/read/hazy_test_notes_to_note_instructions.osu"
-    new_map_path = "./testing/maps/write/hazy_test_notes_to_note_instructions.osu"
+    should_print = True
+    map_path = "./maps/hazy_moon_night/hazy_test.osu"
+    new_map_path = "./maps/hazy_moon_night/hazy_test_output.osu"
 
     normal_lines, timing_points, notes = read_map(map_path, key_count) # tested
 
@@ -25,16 +26,17 @@ def main():
 
     timing_changes_from_map = get_timing_changes(timing_points) # tested
 
-    timing_changes_with_instructions = note_instructions_to_timing_changes(timing_changes_from_map, note_instructions)  # tested
+    final_timing_changes = note_instructions_to_timing_changes(timing_changes_from_map, note_instructions)  # tested
 
-    generated_notes = generate_notes_with_timing_points(timing_changes_with_instructions, notes[-1], key_count) # tested
+    generated_notes = generate_notes_with_timing_points(final_timing_changes, notes[-1], key_count) # tested
 
-    notes_with_chords = add_chords(generated_notes, key_count)
+    notes_with_chords = add_chords(generated_notes, key_count) # tested
 
-    generate_note_matrix(notes_with_chords, timing_changes_with_instructions, key_count)
+    generate_note_matrix(notes_with_chords, final_timing_changes, should_print, key_count) # tested
 
-    new_map = build_new_map(normal_lines, timing_changes_with_instructions, notes_with_chords)
-    write_map(new_map, new_map_path)
+    new_map = build_new_map(normal_lines, final_timing_changes, notes_with_chords) #tested
+
+    write_map(new_map, new_map_path) # tested
 
     for x in range(1, 8):
         print(column_to_x(x, 7))
