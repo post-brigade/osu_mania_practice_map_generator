@@ -14,11 +14,14 @@ from src.functions import (
 
 def main():
     key_count = 7
-    should_print = True
+    should_print = False
     map_path = "./maps/hazy_moon_night/hazy_test.osu"
     new_map_path = "./maps/hazy_moon_night/hazy_test_output.osu"
 
     normal_lines, timing_points, notes = read_map(map_path, key_count) # tested
+
+    for note in notes:
+        print(note.time)
 
     sorted_notes = sorted(notes, key = lambda note: (note.time, note.column))
 
@@ -38,6 +41,7 @@ def main():
 
     write_map(new_map, new_map_path) # tested
 
+    print()
     for x in range(1, 8):
         print(column_to_x(x, 7))
 
