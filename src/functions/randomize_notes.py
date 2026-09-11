@@ -3,6 +3,7 @@ from src.classes import LongNote, Note, TimingPoint
 from .column_and_bpm_helpers import column_to_x, random_column
 
 
+# not currently used
 def randomize_notes(notes: list[Note | LongNote], key_count) -> list[Note | LongNote]:
     notes_no_chords: list[Note | LongNote] = []
 

@@ -14,7 +14,7 @@ KEY_COUNT = 7
 
 def check_note_timings(notes: list[Note], last_note: Note) -> bool:
     if not notes:
-        return False
+        raise ValueError("no notes")
 
     for note in notes:
         if ((note.time > 3705 or math.isclose(note.time, 3705, abs_tol=0.001))
@@ -29,7 +29,7 @@ def check_note_timings(notes: list[Note], last_note: Note) -> bool:
 
 def check_bpm(notes: list[Note]):
     if not notes:
-        return False
+        raise ValueError("no notes")
 
     for i in range(len(notes)):
         if  math.isclose(notes[i].time, 3105, abs_tol=0.001) and not math.isclose(notes[i + 1].time - notes[i].time, 240 / 4, abs_tol=0.001):
@@ -59,20 +59,6 @@ class Test(unittest.TestCase):
 
         self.assertTrue(generating_correct and bpm_correct)
 
-# [TimingPoints]
-# 2505,480,4,1,0,30,1,0
-# 3105,480,4,1,0,30,1,1
-# 4065,480,4,1,0,30,1,0
-# 5265,480,4,1,0,30,1,1
-
-
-# [HitObjects]
-# 36,192,2505,1,0,1:0:0:30:
-# 182,192,3105,25,1,0,1:0:0:30:
-# 109,192,3705,1,0,1:0:0:30:
-# 36,192,4305,1,0,1:0:0:30:
-# 256,192,4905,1,0,1:0:0:30:
-# 475,192,6225,1,0,1:0:0:30:
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,3 +1,4 @@
+import math
 from typing import override
 
 from .note import Note
@@ -26,10 +27,10 @@ class LongNote(Note):
             self.x == other.x
             and self.column == other.column
             and self.y == other.y
-            and self.time == other.time
+            and math.isclose(self.time, other.time, abs_tol=0.1)
             and self.type == other.type
             and self.hit_sound  == other.hit_sound
-            and self.end_time == other.end_time
+            and math.isclose(self.end_time, other.end_time, abs_tol=0.1)
             and self.hit_sample == other.hit_sample
             and self.key_count == other.key_count
         )

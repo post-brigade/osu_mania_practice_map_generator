@@ -1,3 +1,4 @@
+import math
 from typing import override
 
 
@@ -29,7 +30,7 @@ class Note:
             self.x == other.x
             and self.column == other.column
             and self.y == other.y
-            and self.time == other.time
+            and math.isclose(self.time, other.time, abs_tol=0.1)
             and self.type == other.type
             and self.hit_sound  == other.hit_sound
             and self.hit_sample == other.hit_sample

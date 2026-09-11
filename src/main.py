@@ -20,7 +20,7 @@ def main():
     new_map_path = "/mnt/c/Users/postb/Desktop/to_convert/converted.osu"
 
     normal_lines, timing_points, notes = read_map(map_path, key_count) # tested
-    print(notes)
+
     sorted_notes = sorted(notes, key = lambda note: (note.time, note.column))
 
     note_instructions = notes_to_note_instructions(sorted_notes) # tested

@@ -38,15 +38,7 @@ class Test(unittest.TestCase):
     def test_b_read_map_timing_points(self):
         normal_lines, timing_points, notes = read_map(str(MAP_PATH), KEY_COUNT)
         timing_point = timing_points[0]
-        correct_timing_point = TimingPoint(
-            2505,
-            480,
-            4,
-            1,
-            0,
-            30,
-            1,
-            0
+        correct_timing_point = TimingPoint(2505, 480, 4, 1, 0, 30, 1, 0
         )
         self.assertEqual(timing_point, correct_timing_point)
 
@@ -55,13 +47,7 @@ class Test(unittest.TestCase):
         map_path = MAP_INPUT_DIR / "hazy_test_read_map.osu"
         normal_lines, timing_points, notes = read_map(str(MAP_PATH), KEY_COUNT)
         note = notes[0]
-        correct_note = Note(
-            36,
-            192,
-            2505,
-            1,
-            0,
-            "1:0:0:30:"
+        correct_note = Note(36, 192, 2505, 1, 0, "1:0:0:30:"
         )
         self.assertEqual(note, correct_note)
 
@@ -70,18 +56,10 @@ class Test(unittest.TestCase):
         map_path = MAP_INPUT_DIR / "hazy_test_read_map.osu"
         normal_lines, timing_points, notes = read_map(str(MAP_PATH), KEY_COUNT)
         long_note = notes[1]
-        correct_long_note = LongNote(
-            109,
-            192,
-            2625,
-            128,
-            0,
-            2745,
-            "1:0:0:30:"
-        )
+        correct_long_note = LongNote( 109, 192, 2625, 128, 0, 2745, "1:0:0:30:")
+
         self.assertEqual(long_note, correct_long_note)
 
-#36,192,2505,128,0,2625,1:0:0:30:
 
 if __name__ == "__main__":
     unittest.main()

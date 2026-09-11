@@ -21,7 +21,7 @@ def long_note_to_line(note: LongNote) -> list [str]:
     time = str(round(note.time))
     type = str(note.type)
     hit_sound = str(note.hit_sound)
-    end_time = str(note.end_time)
+    end_time = str(round(note.end_time))
     hit_sample = note.hit_sample
 
     note_line = [

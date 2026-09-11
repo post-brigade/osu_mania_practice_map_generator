@@ -38,7 +38,10 @@ def check_notes(line: list[str], notes:list[Note]) -> bool:
     return all(notes_correct)
 
 
-def check_note_matrix(note_matrix: list[list[str]], notes: list[Note]) -> bool:
+def check_note_matrix(note_matrix: list[list[str]], notes: list[Note]) -> bool | None:
+    if not note_matrix:
+        return None
+
     first_barline = check_first_character(note_matrix[0], "▁", True)
     second_barline = check_first_character(note_matrix[8], "▁", True)
     non_barlines = all(check_first_character(line, " ", False) for line in note_matrix[1:8])
@@ -71,8 +74,10 @@ class Test(unittest.TestCase):
 
         if note_matrix:
             note_matrix_correct = check_note_matrix(note_matrix, notes_with_chords)
+        else:
+            note_matrix_correct = False
 
-        self.assertTrue(note_matrix_correct) # ignore error here, none value still has intended result
+        self.assertTrue(note_matrix_correct)
 
 if __name__ == "__main__":
     unittest.main()
