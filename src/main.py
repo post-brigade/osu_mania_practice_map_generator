@@ -12,17 +12,15 @@ from src.functions import (
 )
 
 
+#/mnt/c/Users/postb/Desktop/to_convert
 def main():
     key_count = 7
-    should_print = False
-    map_path = "./maps/hazy_moon_night/hazy_test.osu"
-    new_map_path = "./maps/hazy_moon_night/hazy_test_output.osu"
+    should_print = True
+    map_path = "/mnt/c/Users/postb/Desktop/to_convert/to_convert.osu"
+    new_map_path = "/mnt/c/Users/postb/Desktop/to_convert/converted.osu"
 
     normal_lines, timing_points, notes = read_map(map_path, key_count) # tested
-
-    for note in notes:
-        print(note.time)
-
+    print(notes)
     sorted_notes = sorted(notes, key = lambda note: (note.time, note.column))
 
     note_instructions = notes_to_note_instructions(sorted_notes) # tested

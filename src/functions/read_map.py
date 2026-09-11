@@ -8,8 +8,8 @@ from .create_timing_point import create_timing_point
 
 
 def read_map(map_path: str, key_count: int) -> tuple[list[list[str]], list[TimingPoint], list[Note | LongNote]]:
-    normal_note_pattern = re.compile(r"\d+,\d+,\d+,1,\d,\d:\d:\d:\d{1,3}:")
-    long_note_pattern = re.compile(r"\d+,\d+,\d+,128,\d,\d+,\d:\d:\d:\d{1,3}:")
+    normal_note_pattern = re.compile(r"\d+,\d+,\d+(?:\.\d+)?,1,\d,\d:\d:\d:\d{1,3}:")
+    long_note_pattern = re.compile(r"\d+,\d+,\d+(?:\.\d+)?,128,\d,\d+(?:\.\d+)?,\d:\d:\d:\d{1,3}:")
     timing_point_pattern = re.compile(r"\d+,-?\d+(?:\.\d+)?,\d{1},\d{1},\d,\d{1,3},\d,\d{1,2}")
 
     timing_points: list[TimingPoint] = []
