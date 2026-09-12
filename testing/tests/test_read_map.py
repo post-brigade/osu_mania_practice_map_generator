@@ -17,7 +17,7 @@ class Test(unittest.TestCase):
     def test_a_read_map_normal_lines(self):
         print("\nread_map tests")
 
-        normal_lines, timing_points, notes = read_map(str(MAP_PATH), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(MAP_PATH, KEY_COUNT)
         result = normal_lines
         correct_result = [
             ['osu file format v128'],
@@ -36,7 +36,7 @@ class Test(unittest.TestCase):
 
 
     def test_b_read_map_timing_points(self):
-        normal_lines, timing_points, notes = read_map(str(MAP_PATH), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(MAP_PATH, KEY_COUNT)
         timing_point = timing_points[0]
         correct_timing_point = TimingPoint(2505, 480, 4, 1, 0, 30, 1, 0
         )
@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
 
     def test_c_read_map_notes(self):
         map_path = MAP_INPUT_DIR / "hazy_test_read_map.osu"
-        normal_lines, timing_points, notes = read_map(str(MAP_PATH), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(MAP_PATH, KEY_COUNT)
         note = notes[0]
         correct_note = Note(36, 192, 2505, 1, 0, "1:0:0:30:"
         )
@@ -54,7 +54,7 @@ class Test(unittest.TestCase):
 
     def test_d_read_map_long_notes(self):
         map_path = MAP_INPUT_DIR / "hazy_test_read_map.osu"
-        normal_lines, timing_points, notes = read_map(str(MAP_PATH), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(MAP_PATH, KEY_COUNT)
         long_note = notes[1]
         correct_long_note = LongNote( 109, 192, 2625, 128, 0, 2745, "1:0:0:30:")
 

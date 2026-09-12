@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
         print("\nbuild_map tests")
 
         map_path = MAP_INPUT_DIR / "test_build_new_map" / "test_a.osu"
-        normal_lines, timing_points, notes = read_map(str(map_path), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
 
         comparison_map = simple_read_map(map_path)
         new_map = build_new_map(normal_lines, timing_points, notes, True)

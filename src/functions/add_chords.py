@@ -1,11 +1,23 @@
 from src.classes import LongNote, Note
 
+from .column_and_bpm_helpers import random_column
 from .create_chord_note import create_chord_note
 
 
-def add_chords(notes: list[Note | LongNote], key_count) -> list[Note | LongNote]:
+def add_chord(note: Note, banned_columns: set[int], size_of_chord: int,  key_count: int) -> tuple[list[Note], set[int]]:
+    chord:list[Note | LongNote] = []
+    for i in range(size_of_chord - 1):
+        note = create_chord_note(note, banned_columns, key_count)
+        note.column = random_column(banned_columns, key_count)
+        banned_columns.add(note.column)
+        chord.append(note)
+
+    return chord, banned_columns
+
+def add_chords(notes: list[Note | LongNote], generation_type: int, key_count) -> list[Note | LongNote]:
     notes_with_chords:list[Note | LongNote] = []
     banned_columns: set[int] = set()
+
 
     for i in range(len(notes)):
         notes_with_chords.append(notes[i])
@@ -17,51 +29,24 @@ def add_chords(notes: list[Note | LongNote], key_count) -> list[Note | LongNote]
         if i < len(notes) - 1:
             banned_columns.add(notes[i + 1].column)
 
-        if i % 8 == 0:
-            chord:list[Note | LongNote] = []
-
-            note_1 = create_chord_note(notes[i], banned_columns, key_count)
-            banned_columns.add(note_1.column)
-            chord.append(note_1)
-
-            note_2 = create_chord_note(notes[i], banned_columns, key_count)
-            banned_columns.add(note_2.column)
-            chord.append(note_2)
-
-            note_3 = create_chord_note(notes[i], banned_columns, key_count)
-            banned_columns.add(note_3.column)
-            chord.append(note_3)
-
+        if generation_type == 3 and i % 8 == 0:
+            chord_size = 4
+            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
             sorted_chord = sorted(chord, key = lambda note: note.column)
-
             notes_with_chords.extend(sorted_chord)
             continue
 
         if i % 4 == 0:
-            small_chord:list[Note | LongNote] = []
-
-            note_1 = create_chord_note(notes[i], banned_columns, key_count)
-            banned_columns.add(note_1.column)
-            small_chord.append(note_1)
-
-            note_2 = create_chord_note(notes[i], banned_columns, key_count)
-            banned_columns.add(note_2.column)
-            small_chord.append(note_2)
-
-            sorted_chord = sorted(small_chord, key = lambda note: note.column)
-
+            chord_size = 3
+            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
+            sorted_chord = sorted(chord, key = lambda note: note.column)
             notes_with_chords.extend(sorted_chord)
             continue
 
-        if i % 2 == 0:
-            smaller_chord:list[Note | LongNote] = []
-
-            note_1 = create_chord_note(notes[i], banned_columns, key_count)
-            banned_columns.add(note_1.column)
-            smaller_chord.append(note_1)
-
-            sorted_chord = sorted(smaller_chord, key = lambda note: note.column)
-
+        if generation_type == 3 and i % 2 == 0:
+            chord_size = 2
+            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
+            sorted_chord = sorted(chord, key = lambda note: note.column)
             notes_with_chords.extend(sorted_chord)
             continue
 

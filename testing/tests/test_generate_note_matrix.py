@@ -62,14 +62,14 @@ def check_note_matrix(note_matrix: list[list[str]], notes: list[Note]) -> bool |
 class Test(unittest.TestCase):
     def test_a_check_first_chords(self):
         print("\ngenerate_note_matrix tests")
-
+        generation_type = 3
         map_path = MAP_INPUT_DIR / "test_generate_note_matrix" / "test_a.osu"
-        normal_lines, timing_points, notes = read_map(str(map_path), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
         instructions = notes_to_note_instructions(notes)
         timing_changes_from_map = get_timing_changes(timing_points)
         final_timing_changes = note_instructions_to_timing_changes(timing_changes_from_map, instructions)
         generated_notes = generate_notes_with_timing_points(final_timing_changes, notes[-1], KEY_COUNT)
-        notes_with_chords = add_chords(generated_notes, KEY_COUNT)
+        notes_with_chords = add_chords(generated_notes, generation_type, KEY_COUNT)
         note_matrix = generate_note_matrix(notes_with_chords, final_timing_changes, False, KEY_COUNT)
 
         if note_matrix:

@@ -16,7 +16,7 @@ class Test(unittest.TestCase):
         print("\nnotes_to_note_instructions tests")
 
         map_path = MAP_INPUT_DIR / "test_notes_to_note_instructions" / "test_a.osu"
-        normal_lines, timing_points, notes = read_map(str(map_path), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
         instructions = notes_to_note_instructions(notes)
 
         correct_instructions = [

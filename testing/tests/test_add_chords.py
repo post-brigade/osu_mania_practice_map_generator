@@ -14,7 +14,8 @@ KEY_COUNT = 7
 def chord_is_valid(chord: list[Note]) -> bool:
     chord_times = [note.time for note in chord]
     chord_columns = [note.column for note in chord]
-
+    print(math.isclose(max(chord_times), min(chord_times), abs_tol = .001))
+    print(len(chord_columns) == len(set(chord_columns)))
     chord_correct = (
         math.isclose(max(chord_times), min(chord_times), abs_tol = .001)
         and len(chord_columns) == len(set(chord_columns))
@@ -24,16 +25,18 @@ def chord_is_valid(chord: list[Note]) -> bool:
 
 class Test(unittest.TestCase):
 
-    def test_a_check_first_chords(self):
+    def test_a_check_dense_chords(self):
         print("\nadd_chords tests")
-
+        generation_type = 3
         map_path = MAP_INPUT_DIR / "test_add_chords" / "test_a.osu"
-        normal_lines, timing_points, notes = read_map(str(map_path), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
         instructions = notes_to_note_instructions(notes)
         timing_changes_from_map = get_timing_changes(timing_points)
         final_timing_changes = note_instructions_to_timing_changes(timing_changes_from_map, instructions)
         generated_notes = generate_notes_with_timing_points(final_timing_changes, notes[-1], KEY_COUNT)
-        notes_with_chords = add_chords(generated_notes, KEY_COUNT)
+        notes_with_chords = add_chords(generated_notes, generation_type, KEY_COUNT)
+
+        generate_note_matrix(notes_with_chords, final_timing_changes, True, KEY_COUNT)
 
         self.assertTrue(chord_is_valid(notes_with_chords[0:4]))
         self.assertTrue(chord_is_valid(notes_with_chords[5:7]))

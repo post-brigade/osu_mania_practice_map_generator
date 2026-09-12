@@ -16,7 +16,7 @@ class Test(unittest.TestCase):
         print("\nnote_instructions_to_timing_changes tests")
 
         map_path = MAP_INPUT_DIR / "test_note_instructions_to_timing_changes" / "test_a.osu"
-        normal_lines, timing_points, notes = read_map(str(map_path), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
         instructions = notes_to_note_instructions(notes)
         timing_changes_from_map = get_timing_changes(timing_points)
         final_timing_changes = note_instructions_to_timing_changes(timing_changes_from_map, instructions)

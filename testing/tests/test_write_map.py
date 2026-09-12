@@ -1,5 +1,4 @@
-import math
-import re
+import os
 import unittest
 from pathlib import Path
 
@@ -30,18 +29,20 @@ class Test(unittest.TestCase):
 
         map_path = MAP_INPUT_DIR / "test_write_map" / "test_a.osu"
         new_map_path = MAP_OUTPUT_DIR / "test_write_map" / "test_a.osu"
-        normal_lines, timing_points, notes = read_map(str(map_path), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
 
         comparison_map = simple_read_map(map_path)
         new_map = build_new_map(normal_lines, timing_points, notes, True)
 
-        write_map(new_map, str(new_map_path))
+        write_map(new_map, new_map_path)
 
         with open(new_map_path) as file:
             new_map_read = file.read()
 
         self.maxDiff = None
         self.assertEqual(comparison_map, new_map_read)
+
+        os.remove(new_map_path)
 
 
 

@@ -1,4 +1,12 @@
-For now only hard-coded to read/write files manually set in main().
+run from root of project: $python3 -m src.main <path to input map> <path to output> <generation setting> 
+
+generation setting: 
+
+  1: stream 
+
+  2: light chordstream 
+
+  3: dense chordstream
 
 Works off a timed map and reads notes on the map as instructions by column.
 
@@ -18,7 +26,7 @@ Notes in column:
   
   4: halve bpm
   
-Currently only generates dense 7 key chordstream; need to start with 7 key map.
+Currently only works with 7key.
 
 Generates sample of map in console.
 

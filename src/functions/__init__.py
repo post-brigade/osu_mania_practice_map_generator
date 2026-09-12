@@ -14,6 +14,7 @@ from .create_timing_point import create_timing_point
 from .generate_note_matrix import generate_note_matrix
 from .generate_notes_with_timing_points import generate_notes_with_timing_points
 from .get_timing_changes import get_timing_changes
+from .get_user_arguments import get_user_arguments
 from .note_instructions_to_timing_changes import note_instructions_to_timing_changes
 from .notes_to_note_instructions import notes_to_note_instructions
 from .read_map import read_map

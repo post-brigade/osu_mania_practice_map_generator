@@ -16,7 +16,7 @@ class Test(unittest.TestCase):
         print("\nget_timing_changes tests")
 
         map_path = MAP_INPUT_DIR / "test_get_timing_changes" / "test_a.osu"
-        normal_lines, timing_points, notes = read_map(str(map_path), KEY_COUNT)
+        normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
         timing_changes = get_timing_changes(timing_points)
 
         correct_change_1 = TimingPoint(2505, 480, 4, 1, 0, 30, 1, 0)
