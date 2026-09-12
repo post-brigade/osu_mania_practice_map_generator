@@ -1,16 +1,6 @@
 from src.classes import LongNote, Note, TimingPoint
 
 
-def rgb_to_console_color(r: int, g: int, b: int) -> str:
-    return f"\033[38;2;{r};{g};{b}m"
-
-
-def create_row(is_barline: bool, key_count: int, barline_color, default_color) -> list[str]:
-    column = f"{barline_color}▁▁▁▁▁{default_color}" if is_barline else "     "
-    row = [column for _ in range(key_count)]
-    return row
-
-
 def generate_note_matrix(notes: list[Note | LongNote], timing_changes: list[TimingPoint], should_print:bool, key_count: int):
     if not notes:
         return
@@ -47,3 +37,13 @@ def generate_note_matrix(notes: list[Note | LongNote], timing_changes: list[Timi
 
     # for testing
     return note_matrix
+
+
+def rgb_to_console_color(r: int, g: int, b: int) -> str:
+    return f"\033[38;2;{r};{g};{b}m"
+
+
+def create_row(is_barline: bool, key_count: int, barline_color, default_color) -> list[str]:
+    column = f"{barline_color}▁▁▁▁▁{default_color}" if is_barline else "     "
+    row = [column for _ in range(key_count)]
+    return row
