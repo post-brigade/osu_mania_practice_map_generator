@@ -4,7 +4,7 @@ $python3 -m src.main \<path to input map\> \<path to output\> \<key count\> \<de
 
 Key count: 4 or 7
 
-Density setting: 1 to 5: 1 is single stream, 5 is dense handstream for 4key, dense chordstream for 7k
+Density setting: 1 to 5: 1 is single stream, 5 is dense handstream for 4k, dense chordstream for 7k
 
 Works off a timed map and reads notes on the map as instructions by column.
 
