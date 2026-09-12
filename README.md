@@ -33,3 +33,5 @@ Generates sample of map in console.
 Patterning is currently based on 4/4 meter; odd meters will have accents in weird spots.
 
 Doesn't update metadata yet.
+
+Long note support someday. Maybe.

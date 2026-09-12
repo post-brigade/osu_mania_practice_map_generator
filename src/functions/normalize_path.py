@@ -20,7 +20,4 @@ def normalize_path(raw_input: str) -> Path:
 
 def is_windows_path(path: str) -> bool:
     clean_path = path.strip().strip("'\"")
-    # Matches:
-    # 1. 'C:\' or 'C:/' (Drive letter followed by colon and slash)
-    # 2. '\\' (UNC network share)
     return bool(re.match(r"^[a-zA-Z]:[\\/]", clean_path) or clean_path.startswith("\\\\"))
