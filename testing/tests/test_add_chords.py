@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
 
     def test_a_check_dense_chords(self):
         print("\nadd_chords tests")
-        generation_type = 3
+        generation_type = 5
         map_path = MAP_INPUT_DIR / "test_add_chords" / "test_a.osu"
         normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
         instructions = notes_to_note_instructions(notes)

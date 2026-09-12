@@ -1,12 +1,8 @@
-run from root of project: $python3 -m src.main \<path to input map\> \<path to output\> \<generation setting\> 
+run from root of project: $python3 -m src.main \<path to input map\> \<path to output\> <\key count\> \<density setting\> 
 
-generation setting: 
+key count: 4 or 7
 
-  1: stream 
-
-  2: light chordstream 
-
-  3: dense chordstream
+density setting: 1 to 5: 1 is single stream, 5 is dense handstream for 4key, dense chordstream for 7k
 
 Works off a timed map and reads notes on the map as instructions by column.
 

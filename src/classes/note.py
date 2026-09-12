@@ -21,6 +21,8 @@ class Note:
         self.hit_sample = hit_sample
         self.key_count = key_count
 
+        self.time_index: int = 0
+
 
     def __eq__(self, other):
         if not isinstance(other, Note):

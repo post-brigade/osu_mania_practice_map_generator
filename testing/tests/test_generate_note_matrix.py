@@ -62,7 +62,7 @@ def check_note_matrix(note_matrix: list[list[str]], notes: list[Note]) -> bool |
 class Test(unittest.TestCase):
     def test_a_check_first_chords(self):
         print("\ngenerate_note_matrix tests")
-        generation_type = 3
+        generation_type = 5
         map_path = MAP_INPUT_DIR / "test_generate_note_matrix" / "test_a.osu"
         normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
         instructions = notes_to_note_instructions(notes)
