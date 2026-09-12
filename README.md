@@ -1,4 +1,4 @@
-run from root of project: $python3 -m src.main \<path to input map\> \<path to output\> <\key count\> \<density setting\> 
+run from root of project: $python3 -m src.main \<path to input map\> \<path to output\> \<key count\> \<density setting\> 
 
 key count: 4 or 7
 
