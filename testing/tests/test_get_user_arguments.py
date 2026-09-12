@@ -58,7 +58,7 @@ class Test(unittest.TestCase):
             " ",
             valid_input,
             valid_output,
-            "4"
+            "6"
         ]
 
         x, y, z = get_user_arguments(valid_args)

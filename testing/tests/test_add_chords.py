@@ -14,8 +14,6 @@ KEY_COUNT = 7
 def chord_is_valid(chord: list[Note]) -> bool:
     chord_times = [note.time for note in chord]
     chord_columns = [note.column for note in chord]
-    print(math.isclose(max(chord_times), min(chord_times), abs_tol = .001))
-    print(len(chord_columns) == len(set(chord_columns)))
     chord_correct = (
         math.isclose(max(chord_times), min(chord_times), abs_tol = .001)
         and len(chord_columns) == len(set(chord_columns))
@@ -35,8 +33,6 @@ class Test(unittest.TestCase):
         final_timing_changes = note_instructions_to_timing_changes(timing_changes_from_map, instructions)
         generated_notes = generate_notes_with_timing_points(final_timing_changes, notes[-1], KEY_COUNT)
         notes_with_chords = add_chords(generated_notes, generation_type, KEY_COUNT)
-
-        generate_note_matrix(notes_with_chords, final_timing_changes, True, KEY_COUNT)
 
         self.assertTrue(chord_is_valid(notes_with_chords[0:4]))
         self.assertTrue(chord_is_valid(notes_with_chords[5:7]))
