@@ -4,7 +4,7 @@ $python3 -m src.main \<path to input map\> \<path to output\> \<key count\> \<de
 
 Or run with main.sh:
 
-Follow the prompts, will accept windows and linux paths (if using wsl)S
+Follow the prompts, will accept windows and linux paths (if using WSL)
 
 Key count: 4 or 7
 
