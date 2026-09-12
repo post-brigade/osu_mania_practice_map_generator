@@ -23,8 +23,6 @@ Notes in column:
   3: double bpm
   
   4: halve bpm
-  
-Works with 4key and 7key.
 
 Generates sample of map in console.
 
