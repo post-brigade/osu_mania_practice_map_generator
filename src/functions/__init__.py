@@ -16,7 +16,6 @@ from .generate_notes_with_timing_points import generate_notes_with_timing_points
 from .get_timing_changes import get_timing_changes
 from .note_instructions_to_timing_changes import note_instructions_to_timing_changes
 from .notes_to_note_instructions import notes_to_note_instructions
-from .randomize_notes import randomize_notes
 from .read_map import read_map
 from .to_lines import to_lines
 from .write_map import write_map
