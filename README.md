@@ -1,8 +1,10 @@
-run from root of project: $python3 -m src.main \<path to input map\> \<path to output\> \<key count\> \<density setting\> 
+Run from root of project: 
 
-key count: 4 or 7
+$python3 -m src.main \<path to input map\> \<path to output\> \<key count\> \<density setting\> 
 
-density setting: 1 to 5: 1 is single stream, 5 is dense handstream for 4key, dense chordstream for 7k
+Key count: 4 or 7
+
+Density setting: 1 to 5: 1 is single stream, 5 is dense handstream for 4key, dense chordstream for 7k
 
 Works off a timed map and reads notes on the map as instructions by column.
 
@@ -22,7 +24,7 @@ Notes in column:
   
   4: halve bpm
   
-Currently only works with 7key.
+Works with 4key and 7key.
 
 Generates sample of map in console.
 
