@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 
-def get_user_arguments(args: list[str]) -> tuple[Path, Path, int, int]:
+def get_cli_arguments(args: list[str]) -> tuple[Path, Path, int, int]:
     if (len(args) != 5):
         raise ValueError("Format: python3 -m src.main <map input> <map output> <key count> <generation type>")
 

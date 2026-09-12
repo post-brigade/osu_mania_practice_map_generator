@@ -3,11 +3,11 @@ import sys
 from src.functions import (
     add_chords,
     build_new_map,
-    column_to_x,
     generate_note_matrix,
     generate_notes_with_timing_points,
+    get_cli_arguments,
     get_timing_changes,
-    get_user_arguments,
+    get_user_input,
     note_instructions_to_timing_changes,
     notes_to_note_instructions,
     read_map,
@@ -18,7 +18,11 @@ from src.functions import (
 def main():
     should_print = True
 
-    map_path, new_map_path, key_count, generation_type = get_user_arguments(sys.argv)
+    if len(sys.argv) == 1:
+        map_path, new_map_path, key_count, generation_type = get_user_input()
+
+    else:
+        map_path, new_map_path, key_count, generation_type = get_cli_arguments(sys.argv)
 
     normal_lines, timing_points, notes = read_map(map_path, key_count) # tested
 
@@ -39,10 +43,6 @@ def main():
     new_map = build_new_map(normal_lines, final_timing_changes, notes_to_map) #tested
 
     write_map(new_map, new_map_path) # tested
-
-    print()
-    for x in range(1, 8):
-        print(column_to_x(x, 7))
 
 if __name__ == "__main__":
     main()

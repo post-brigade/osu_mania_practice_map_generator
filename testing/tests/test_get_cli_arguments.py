@@ -67,23 +67,23 @@ class Test(unittest.TestCase):
             "6"
         ]
 
-        w, x, y, z = get_user_arguments(valid_args)
+        w, x, y, z = get_cli_arguments(valid_args)
 
         # inactive for testing
         # with self.assertRaisesRegex(ValueError, "File exists at output path"):
         #     get_user_arguments(invalid_args)
 
         with self.assertRaisesRegex(ValueError, "Invalid input, need .osu file"):
-            get_user_arguments(invalid_args_2)
+            get_cli_arguments(invalid_args_2)
 
         with self.assertRaisesRegex(ValueError, "Invalid input, need .osu file"):
-            get_user_arguments(invalid_args_3)
+            get_cli_arguments(invalid_args_3)
 
         with self.assertRaisesRegex(ValueError, "Output directory does not exist"):
-            get_user_arguments(invalid_args_4)
+            get_cli_arguments(invalid_args_4)
 
         with self.assertRaisesRegex(ValueError, "Invalid generation type: 1: stream, 2: light chordstream, 3: dense chordstream"):
-            get_user_arguments(invalid_args_5)
+            get_cli_arguments(invalid_args_5)
 
 
 

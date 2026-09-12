@@ -2,6 +2,10 @@ Run from root of project:
 
 $python3 -m src.main \<path to input map\> \<path to output\> \<key count\> \<density setting\> 
 
+Or run with main.sh:
+
+Follow the prompts, will accept windows and linux paths (if using wsl)S
+
 Key count: 4 or 7
 
 Density setting: 1 to 5: 1 is single stream, 5 is dense handstream for 4k, dense chordstream for 7k
