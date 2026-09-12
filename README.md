@@ -1,4 +1,4 @@
-run from root of project: $python3 -m src.main <path to input map> <path to output> <generation setting> 
+run from root of project: $python3 -m src.main \<path to input map\> \<path to output\> \<generation setting\> 
 
 generation setting: 
 
