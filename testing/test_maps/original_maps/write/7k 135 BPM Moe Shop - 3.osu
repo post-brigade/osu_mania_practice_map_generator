@@ -1,0 +1,59 @@
+﻿osu file format v128
+
+[General]
+AudioFilename: audio.mp3
+AudioLeadIn: 0
+PreviewTime: 49777
+Countdown: 0
+SampleSet: Normal
+StackLeniency: 0.7
+Mode: 3
+LetterboxInBreaks: 0
+SpecialStyle: 0
+UseSkinSprites: 0
+WidescreenStoryboard: 1
+
+[Editor]
+DistanceSpacing: 0.8
+BeatDivisor: 4
+GridSize: 4
+TimelineZoom: 1.9
+VelocityPresets: 0.75,1,1.5
+
+[Metadata]
+Title: <3
+TitleUnicode: <3
+Artist: Moe Shop
+ArtistUnicode: Moe Shop
+Creator: Todestrieb
+Version: 7k 135 BPM
+Tags: LN inverse Elementaires heart moestep anime groove future funk electronic instrumental japanese Ring of Fortune 佐々木恵梨 Sasaki Eri Plastic Memories プラスティック・メモリーズ
+BeatmapSetID: 502203
+
+[Difficulty]
+HPDrainRate: 8
+CircleSize: 7
+OverallDifficulty: 8
+ApproachRate: 5
+SliderMultiplier: 1.3999999687075613
+SliderTickRate: 1
+
+[Events]
+// Background and Video events
+0,0,"BG.jpg",0,0
+// Storyboard Layer 0 (Background)
+// Storyboard Layer 1 (Fail)
+// Storyboard Layer 2 (Pass)
+// Storyboard Layer 3 (Foreground)
+// Storyboard Layer 4 (Overlay)
+// Storyboard Sound Samples
+// Break Periods
+2,3755.555555555552,91555.55555555546
+
+[TimingPoints]
+0,444.444444444444,4,1,0,100,1,0
+
+
+[HitObjects]
+36,192,3555.555555555552,1,0,1:0:0:100:
+475,192,92444.44444444435,1,0,1:0:0:100:

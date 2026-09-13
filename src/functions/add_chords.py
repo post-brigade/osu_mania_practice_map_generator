@@ -1,7 +1,9 @@
+import copy
+import math
+
 from src.classes import LongNote, Note
 
-from .column_and_bpm_helpers import random_column
-from .create_chord_note import create_chord_note
+from .column_and_bpm_helpers import column_to_x, random_column
 
 
 def add_chords(notes: list[Note | LongNote], generation_type: int, key_count) -> list[Note | LongNote]:
@@ -20,109 +22,78 @@ def add_chords(notes: list[Note | LongNote], generation_type: int, key_count) ->
 
 def add_chord(note: Note, banned_columns: set[int], size_of_chord: int,  key_count: int) -> tuple[list[Note], set[int]]:
     chord:list[Note | LongNote] = []
-    for i in range(size_of_chord - 1):
-        note = create_chord_note(note, banned_columns, key_count)
-        note.column = random_column(banned_columns, key_count)
-        banned_columns.add(note.column)
-        chord.append(note)
+    new_banned_columns = banned_columns
+    next_banned_columns: set[int] = set()
+    for i in range(size_of_chord):
+        chord_note = create_chord_note(note, new_banned_columns, key_count)
+        new_banned_columns.add(chord_note.column)
+        next_banned_columns.add(chord_note.column)
+        chord.append(chord_note)
+    sorted_chord = sorted(chord, key = lambda note: note.column)
+    return sorted_chord, new_banned_columns
 
-    return chord, banned_columns
+
+def create_chord_note(note: Note | LongNote, banned_columns: set[int], key_count = 7) -> Note | LongNote:
+    new_note = copy.copy(note)
+    new_note.column = random_column(banned_columns, key_count)
+    new_note.x = column_to_x(new_note.column, key_count)
+
+    return new_note
 
 
-def seven_key_chords(notes, generation_type):
+def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
     key_count = 7
     notes_with_chords:list[Note | LongNote] = []
-    time_index = 0
+    banned_columns: set[int] = set()
+    chord_index = 0
 
     for i in range(len(notes)):
-        banned_columns: set[int] = set()
-        notes[i].time_index = time_index
+        if 0 < i < len(notes) - 1:
+            time_step = notes[i].time - notes[i - 1].time
+            next_step = notes[i + 1].time - notes[i].time
 
-        if i > 0:
-            banned_columns = check_time_index(notes_with_chords, banned_columns, -1,  notes[i].time_index)
+            if next_step > time_step * 4 or math.isclose(next_step, time_step * 4, abs_tol=.1):
+                banned_columns = set()
+                chord_index = 0
 
-        notes[i].column = random_column(banned_columns, key_count)
-        banned_columns.add(notes[i].column)
-        notes_with_chords.append(notes[i])
-
-        if generation_type == 5 and i % 8 == 0:
-            chord_size = 4
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            sorted_chord = sorted(chord, key = lambda note: note.column)
-            notes_with_chords.extend(sorted_chord)
-            time_index += 1
-            continue
-
-        if i % 4 == 0:
-            if generation_type in (2, 4):
-                chord_size = 2
-            elif generation_type == 3:
-                chord_size = 4
-            elif generation_type == 5:
-                chord_size = 3
-            else:
-                continue
-
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            sorted_chord = sorted(chord, key = lambda note: note.column)
-            notes_with_chords.extend(sorted_chord)
-            time_index += 1
-            continue
-
-        if generation_type in (4, 5) and i % 2 == 0:
-            chord_size = 2
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            sorted_chord = sorted(chord, key = lambda note: note.column)
-            notes_with_chords.extend(sorted_chord)
-            time_index += 1
-            continue
-
-        time_index += 1
+        if chord_index % 4 == 0 and generation_type == 4:
+            chord, banned_columns = add_chord(notes[i], banned_columns, 3, key_count)
+            notes_with_chords.extend(chord)
+            chord_index += 1
+        else:
+            new_note = copy.copy(notes[i])
+            new_note.column = random_column(banned_columns, key_count)
+            new_note.x = column_to_x(new_note.column, key_count)
+            banned_columns = {new_note.column}
+            notes_with_chords.append(new_note)
+            chord_index += 1
 
     return notes_with_chords
 
 
-def four_key_chords(notes: list[Note], generation_type: int):
+def four_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
     key_count = 4
     notes_with_chords:list[Note | LongNote] = []
     time_index = 0
-
+    banned_columns: set[int] = set()
+    chord_index = 0
     for i in range(len(notes)):
-        banned_columns: set[int] = set()
-        notes[i].time_index = time_index
+        if i % 4 == 0 and generation_type == 4:
+            chord, banned_columns = add_chord(notes[i], banned_columns, 3, key_count)
+            notes_with_chords.extend(chord)
+            if chord_index < 9:
+                print(banned_columns)
+                chord_index += 1
 
-        if i > 0:
-            banned_columns = check_time_index(notes_with_chords, banned_columns, -1,  notes[i].time_index)
-
-        notes[i].column = random_column(banned_columns, key_count)
-        banned_columns.add(notes[i].column)
-        notes_with_chords.append(notes[i])
-
-        if (generation_type == 4 or generation_type == 5) and i % 4 == 0:
-            chord_size = 3
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            sorted_chord = sorted(chord, key = lambda note: note.column)
-            notes_with_chords.extend(sorted_chord)
-            time_index += 1
-            continue
-
-        if (generation_type == 2 or generation_type == 3) and i % 4 == 0:
-            chord_size = 2
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            sorted_chord = sorted(chord, key = lambda note: note.column)
-            notes_with_chords.extend(sorted_chord)
-            time_index += 1
-            continue
-
-        if (generation_type == 3 or generation_type == 5) and i % 2 == 0:
-            chord_size = 2
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            sorted_chord = sorted(chord, key = lambda note: note.column)
-            notes_with_chords.extend(sorted_chord)
-            time_index += 1
-            continue
-
-        time_index += 1
+        else:
+            new_note = copy.copy(notes[i])
+            new_note.column = random_column(banned_columns, key_count)
+            new_note.x = column_to_x(new_note.column, key_count)
+            banned_columns = {new_note.column}
+            notes_with_chords.append(new_note)
+            if chord_index < 9:
+                print(banned_columns)
+                chord_index += 1
 
     return notes_with_chords
 

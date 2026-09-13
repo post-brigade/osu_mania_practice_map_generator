@@ -1,0 +1,69 @@
+﻿osu file format v128
+
+[General]
+AudioFilename: audio.mp3
+AudioLeadIn: 0
+PreviewTime: 51335
+Countdown: 0
+SampleSet: Normal
+StackLeniency: 0.7
+Mode: 3
+LetterboxInBreaks: 0
+SpecialStyle: 0
+UseSkinSprites: 0
+WidescreenStoryboard: 0
+
+[Editor]
+DistanceSpacing: 0.9
+BeatDivisor: 16
+GridSize: 4
+TimelineZoom: 1.2
+VelocityPresets: 0.75,1,1.5
+
+[Metadata]
+Title: The First Layer
+TitleUnicode: The First Layer
+Artist: Kevin Penkin
+ArtistUnicode: Kevin Penkin
+Creator: Kivicat
+Version: 7k 85 BPM
+Source: Made in Abyss
+Tags: keysounds bells strings woodwind
+BeatmapSetID: 676541
+
+[Difficulty]
+HPDrainRate: 8.5
+CircleSize: 7
+OverallDifficulty: 7
+ApproachRate: 5
+SliderMultiplier: 1.4
+SliderTickRate: 1
+
+[Events]
+// Background and Video events
+0,0,"itx24ZijO1Q.jpg",0,0
+// Storyboard Layer 0 (Background)
+// Storyboard Layer 1 (Fail)
+// Storyboard Layer 2 (Pass)
+// Storyboard Layer 3 (Foreground)
+// Storyboard Layer 4 (Overlay)
+// Storyboard Sound Samples
+Sample,73923,0,"SCG_C#5s.wav",25
+Sample,74276,0,"SCG_C#5s.wav",25
+Sample,75688,0,"SCG_C#5s.wav",25
+Sample,83453,0,"SCG_A#5s.wav",12
+Sample,83806,0,"SCG_C#5s.wav",12
+Sample,84511,0,"SCG_A#5s.wav",20
+Sample,84864,0,"SCG_C#5s.wav",20
+Sample,85923,0,"SCG_F5s.wav",30
+Sample,86276,0,"SCG_F5s.wav",25
+Sample,86982,0,"SCG_F5s.wav",10
+// Break Periods
+
+[TimingPoints]
+512,705.882352941176,3,1,0,100,1,0
+
+
+[HitObjects]
+36,192,512,1,0,1:0:0:100:
+475,192,110629.64705882345,1,0,1:0:0:100:

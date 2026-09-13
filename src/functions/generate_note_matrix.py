@@ -1,5 +1,7 @@
 from src.classes import LongNote, Note, TimingPoint
 
+from .column_and_bpm_helpers import column_to_x, x_to_column
+
 
 def generate_note_matrix(notes: list[Note | LongNote], timing_changes: list[TimingPoint], should_print:bool, key_count: int):
     if not notes:
@@ -23,7 +25,8 @@ def generate_note_matrix(notes: list[Note | LongNote], timing_changes: list[Timi
         if time_index >= 32:
             break
         current_note = notes[i]
-        note_matrix[time_index][current_note.column - 1] = barline_note if is_barline else note
+        current_column = x_to_column(current_note.x, key_count)
+        note_matrix[time_index][current_column - 1] = barline_note if is_barline else note
 
         if i < len(notes) - 1 and current_note.time != notes[i + 1].time:
             time_index += 1

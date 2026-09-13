@@ -1,0 +1,62 @@
+﻿osu file format v128
+
+[General]
+AudioFilename: audio.mp3
+AudioLeadIn: 0
+PreviewTime: 201427
+Countdown: 0
+SampleSet: Normal
+StackLeniency: 0.7
+Mode: 3
+LetterboxInBreaks: 0
+SpecialStyle: 0
+UseSkinSprites: 0
+WidescreenStoryboard: 0
+
+[Editor]
+DistanceSpacing: 1.4
+BeatDivisor: 4
+GridSize: 8
+TimelineZoom: 1
+VelocityPresets: 0.75,1,1.5
+
+[Metadata]
+Title: Eternal Ending (aran Remix)
+TitleUnicode: Eternal Ending (aran Remix)
+Artist: Kobaryo
+ArtistUnicode: Kobaryo
+Creator: tailsdk
+Version: 7k 115 BPM
+Tags: HARDCORE TANO*C REMIXES 4 TCPLUS-0031
+BeatmapSetID: 897754
+
+[Difficulty]
+HPDrainRate: 8
+CircleSize: 7
+OverallDifficulty: 8
+ApproachRate: 5
+SliderMultiplier: 1.4
+SliderTickRate: 1
+
+[Events]
+// Background and Video events
+0,0,"Green-Anime-Wallpapers-012.png",0,0
+// Storyboard Layer 0 (Background)
+// Storyboard Layer 1 (Fail)
+// Storyboard Layer 2 (Pass)
+// Storyboard Layer 3 (Foreground)
+// Storyboard Layer 4 (Overlay)
+// Storyboard Sound Samples
+// Break Periods
+
+[TimingPoints]
+1080,521.739130434783,4,1,0,100,1,0
+51166,-100,4,1,0,100,0,1
+83514,-100,4,1,0,100,0,0
+201427,-100,4,1,0,100,0,1
+233775,-100,4,1,0,100,0,0
+
+
+[HitObjects]
+36,192,51166.956521739165,1,0,1:0:0:100:
+475,192,234819.13043478277,1,0,1:0:0:100:

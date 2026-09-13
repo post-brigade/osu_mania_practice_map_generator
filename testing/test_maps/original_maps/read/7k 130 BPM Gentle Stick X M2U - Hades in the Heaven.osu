@@ -1,0 +1,420 @@
+﻿osu file format v128
+
+[General]
+AudioFilename: m2u.mp3
+AudioLeadIn: 0
+PreviewTime: 81748
+Countdown: 0
+SampleSet: Normal
+StackLeniency: 0.7
+Mode: 3
+LetterboxInBreaks: 0
+SpecialStyle: 0
+UseSkinSprites: 0
+WidescreenStoryboard: 1
+
+[Editor]
+DistanceSpacing: 1
+BeatDivisor: 4
+GridSize: 0
+TimelineZoom: 1
+VelocityPresets: 0.75,1,1.5
+
+[Metadata]
+Title: Hades in the Heaven
+TitleUnicode: Hades in the Heaven
+Artist: Gentle Stick X M2U
+ArtistUnicode: Gentle Stick X M2U
+Creator: AngelHoney
+Version: 7k 130 BPM
+Source: O2jam U
+Tags: SOLENA DJPop OnosakiHito K i A i KIAI Lan wings SUBSTAC9
+BeatmapSetID: 114488
+
+[Difficulty]
+HPDrainRate: 8
+CircleSize: 7
+OverallDifficulty: 8
+ApproachRate: 5
+SliderMultiplier: 1.3999999687075613
+SliderTickRate: 1
+
+[Events]
+// Background and Video events
+0,0,"BG.jpg",0,0
+// Storyboard Layer 0 (Background)
+// Storyboard Layer 1 (Fail)
+// Storyboard Layer 2 (Pass)
+// Storyboard Layer 3 (Foreground)
+// Storyboard Layer 4 (Overlay)
+// Storyboard Sound Samples
+Sample,15518,0,"hihatL.wav",100
+Sample,15748,0,"kick.wav",100
+Sample,15748,0,"clap.wav",100
+Sample,16441,0,"hihatL.wav",100
+Sample,16671,0,"kick.wav",100
+Sample,16671,0,"clap.wav",100
+Sample,17594,0,"kick.wav",100
+Sample,18287,0,"hihatL.wav",100
+Sample,18518,0,"kick.wav",100
+Sample,19210,0,"hihatL.wav",100
+Sample,19441,0,"kick.wav",100
+Sample,19441,0,"clap.wav",100
+Sample,20133,0,"hihatL.wav",100
+Sample,20364,0,"kick.wav",100
+Sample,20364,0,"clap.wav",100
+Sample,21287,0,"kick.wav",100
+Sample,21979,0,"hihatL.wav",100
+Sample,22094,0,"hihatR.wav",100
+Sample,22210,0,"kick.wav",100
+Sample,22210,0,"hihatR.wav",100
+Sample,22325,0,"hihatR.wav",100
+Sample,22556,0,"hihatR.wav",100
+Sample,22902,0,"hihatL.wav",100
+Sample,23133,0,"kick.wav",100
+Sample,23133,0,"clap.wav",100
+Sample,23825,0,"hihatL.wav",100
+Sample,24056,0,"kick.wav",100
+Sample,24056,0,"clap.wav",100
+Sample,24979,0,"kick.wav",100
+Sample,25671,0,"hihatL.wav",100
+Sample,25902,0,"kick.wav",100
+Sample,26594,0,"hihatL.wav",100
+Sample,26825,0,"kick.wav",100
+Sample,26825,0,"clap.wav",100
+Sample,27518,0,"hihatL.wav",100
+Sample,27748,0,"kick.wav",100
+Sample,27748,0,"clap.wav",100
+Sample,28441,0,"hihatL.wav",100
+Sample,28671,0,"clap.wav",100
+Sample,28902,0,"hihatL.wav",100
+Sample,29479,0,"hihatR.wav",100
+Sample,29594,0,"hihatR.wav",100
+Sample,29594,0,"kick.wav",100
+Sample,29710,0,"hihatR.wav",100
+Sample,29941,0,"hihatR.wav",100
+Sample,30287,0,"hihatL.wav",100
+Sample,30518,0,"kick.wav",100
+Sample,30748,0,"hihatL.wav",100
+Sample,31210,0,"hihatL.wav",100
+Sample,31441,0,"kick.wav",100
+Sample,31671,0,"hihatL.wav",100
+Sample,32133,0,"hihatL.wav",100
+Sample,32364,0,"kick.wav",100
+Sample,32594,0,"hihatL.wav",100
+Sample,33056,0,"hihatL.wav",100
+Sample,33287,0,"kick.wav",100
+Sample,33518,0,"hihatL.wav",100
+Sample,33979,0,"hihatL.wav",100
+Sample,34210,0,"kick.wav",100
+Sample,34441,0,"hihatL.wav",100
+Sample,34902,0,"hihatL.wav",100
+Sample,35133,0,"kick.wav",100
+Sample,35364,0,"hihatL.wav",100
+Sample,35825,0,"hihatL.wav",100
+Sample,36056,0,"kick.wav",100
+Sample,36287,0,"hihatL.wav",100
+Sample,36748,0,"hihatL.wav",100
+Sample,36864,0,"hihatR.wav",100
+Sample,36979,0,"kick.wav",100
+Sample,36979,0,"hihatR.wav",100
+Sample,37094,0,"hihatR.wav",100
+Sample,37210,0,"hihatL.wav",100
+Sample,37325,0,"hihatR.wav",100
+Sample,37671,0,"hihatL.wav",100
+Sample,37902,0,"kick.wav",100
+Sample,38133,0,"hihatL.wav",100
+Sample,38594,0,"hihatL.wav",100
+Sample,38825,0,"kick.wav",100
+Sample,39056,0,"hihatL.wav",100
+Sample,39518,0,"hihatL.wav",100
+Sample,39748,0,"kick.wav",100
+Sample,39979,0,"hihatL.wav",100
+Sample,40441,0,"hihatL.wav",100
+Sample,40671,0,"kick.wav",100
+Sample,40902,0,"hihatL.wav",100
+Sample,41364,0,"hihatL.wav",100
+Sample,41594,0,"kick.wav",100
+Sample,41825,0,"hihatL.wav",100
+Sample,42287,0,"hihatL.wav",100
+Sample,42518,0,"kick.wav",100
+Sample,42748,0,"hihatL.wav",100
+Sample,43210,0,"hihatL.wav",100
+Sample,43441,0,"kick.wav",100
+Sample,43671,0,"hihatL.wav",100
+Sample,44133,0,"hihatL.wav",100
+Sample,57748,0,"snare.wav",58
+Sample,57864,0,"snare.wav",58
+Sample,57979,0,"snare.wav",64
+Sample,58094,0,"snare.wav",64
+Sample,58210,0,"snare.wav",70
+Sample,58325,0,"snare.wav",70
+Sample,58441,0,"snare.wav",76
+Sample,58556,0,"snare.wav",76
+Sample,58671,0,"snare.wav",82
+Sample,58787,0,"snare.wav",82
+Sample,58902,0,"snare.wav",88
+Sample,59018,0,"snare.wav",88
+Sample,59133,0,"snare.wav",94
+Sample,59248,0,"snare.wav",94
+Sample,59364,0,"snare.wav",100
+Sample,59479,0,"snare.wav",100
+Sample,59825,0,"hihatL.wav",100
+Sample,60287,0,"hihatL.wav",100
+Sample,60748,0,"hihatL.wav",100
+Sample,61210,0,"hihatL.wav",100
+Sample,61671,0,"hihatL.wav",100
+Sample,62133,0,"hihatL.wav",100
+Sample,62594,0,"hihatL.wav",100
+Sample,63056,0,"hihatL.wav",100
+Sample,63518,0,"hihatL.wav",100
+Sample,63979,0,"hihatL.wav",100
+Sample,64441,0,"hihatL.wav",100
+Sample,64902,0,"hihatL.wav",100
+Sample,65364,0,"hihatL.wav",100
+Sample,65825,0,"hihatL.wav",100
+Sample,66287,0,"hihatL.wav",100
+Sample,66402,0,"hihatR.wav",100
+Sample,66518,0,"hihatR.wav",100
+Sample,66633,0,"hihatR.wav",100
+Sample,66748,0,"hihatL.wav",100
+Sample,66864,0,"hihatR.wav",100
+Sample,67210,0,"hihatL.wav",100
+Sample,67671,0,"hihatL.wav",100
+Sample,68133,0,"hihatL.wav",100
+Sample,68594,0,"hihatL.wav",100
+Sample,69056,0,"hihatL.wav",100
+Sample,69518,0,"hihatL.wav",100
+Sample,69979,0,"hihatL.wav",100
+Sample,70441,0,"hihatL.wav",100
+Sample,70902,0,"hihatL.wav",100
+Sample,71364,0,"hihatL.wav",100
+Sample,71825,0,"hihatL.wav",100
+Sample,72287,0,"hihatL.wav",100
+Sample,72518,0,"snare.wav",100
+Sample,72633,0,"snare.wav",100
+Sample,72748,0,"hihatL.wav",100
+Sample,72864,0,"snare.wav",100
+Sample,72979,0,"snare.wav",100
+Sample,73210,0,"hihatL.wav",100
+Sample,73210,0,"snare.wav",100
+Sample,73325,0,"snare.wav",100
+Sample,73556,0,"snare.wav",100
+Sample,73671,0,"snare.wav",100
+Sample,73671,0,"hihatL.wav",100
+Sample,73902,0,"snare.wav",100
+Sample,74018,0,"snare.wav",100
+Sample,74133,0,"hihatL.wav",100
+Sample,74133,0,"snare.wav",100
+Sample,74248,0,"snare.wav",100
+Sample,74364,0,"snare.wav",100
+Sample,74594,0,"snare.wav",100
+Sample,74710,0,"snare.wav",100
+Sample,74825,0,"snare.wav",100
+Sample,75287,0,"snare.wav",100
+Sample,75633,0,"snare.wav",100
+Sample,75748,0,"snare.wav",100
+Sample,76210,0,"snare.wav",100
+Sample,76556,0,"snare.wav",100
+Sample,76671,0,"snare.wav",100
+Sample,76902,0,"snare.wav",100
+Sample,77133,0,"snare.wav",100
+Sample,77594,0,"snare.wav",100
+Sample,77941,0,"snare.wav",100
+Sample,78056,0,"snare.wav",100
+Sample,78287,0,"snare.wav",100
+Sample,78402,0,"snare.wav",100
+Sample,78518,0,"snare.wav",100
+Sample,78979,0,"snare.wav",100
+Sample,79325,0,"snare.wav",100
+Sample,79441,0,"snare.wav",100
+Sample,79729,0,"snare.wav",100
+Sample,79844,0,"snare.wav",100
+Sample,79902,0,"snare.wav",100
+Sample,80248,0,"snare.wav",100
+Sample,80364,0,"snare.wav",100
+Sample,80594,0,"snare.wav",100
+Sample,80825,0,"snare.wav",100
+Sample,81748,0,"kick.wav",100
+Sample,82210,0,"kick.wav",100
+Sample,82671,0,"kick.wav",100
+Sample,83133,0,"kick.wav",100
+Sample,83594,0,"kick.wav",100
+Sample,84056,0,"kick.wav",100
+Sample,84518,0,"kick.wav",100
+Sample,84979,0,"kick.wav",100
+Sample,85441,0,"kick.wav",100
+Sample,85902,0,"kick.wav",100
+Sample,86364,0,"kick.wav",100
+Sample,86825,0,"kick.wav",100
+Sample,87287,0,"kick.wav",100
+Sample,87748,0,"kick.wav",100
+Sample,88210,0,"kick.wav",100
+Sample,88671,0,"kick.wav",100
+Sample,89133,0,"kick.wav",100
+Sample,89594,0,"kick.wav",100
+Sample,90056,0,"kick.wav",100
+Sample,90518,0,"kick.wav",100
+Sample,90979,0,"kick.wav",100
+Sample,91441,0,"kick.wav",100
+Sample,91902,0,"kick.wav",100
+Sample,92364,0,"kick.wav",100
+Sample,92825,0,"kick.wav",100
+Sample,93287,0,"kick.wav",100
+Sample,93748,0,"kick.wav",100
+Sample,94210,0,"kick.wav",100
+Sample,94671,0,"kick.wav",100
+Sample,95133,0,"kick.wav",100
+Sample,95594,0,"kick.wav",100
+Sample,96518,0,"kick.wav",100
+Sample,96748,0,"hihatL.wav",100
+Sample,96979,0,"kick.wav",100
+Sample,97210,0,"hihatL.wav",100
+Sample,97441,0,"kick.wav",100
+Sample,97671,0,"hihatL.wav",100
+Sample,97902,0,"kick.wav",100
+Sample,98133,0,"hihatL.wav",100
+Sample,98364,0,"kick.wav",100
+Sample,98594,0,"hihatL.wav",100
+Sample,98825,0,"kick.wav",100
+Sample,99056,0,"hihatL.wav",100
+Sample,99287,0,"kick.wav",100
+Sample,99518,0,"hihatL.wav",100
+Sample,99748,0,"kick.wav",100
+Sample,99979,0,"hihatL.wav",100
+Sample,100210,0,"kick.wav",100
+Sample,100441,0,"hihatL.wav",100
+Sample,100671,0,"kick.wav",100
+Sample,100902,0,"hihatL.wav",100
+Sample,101133,0,"kick.wav",100
+Sample,101364,0,"hihatL.wav",100
+Sample,101594,0,"kick.wav",100
+Sample,101825,0,"hihatL.wav",100
+Sample,102056,0,"kick.wav",100
+Sample,102287,0,"hihatL.wav",100
+Sample,102518,0,"kick.wav",100
+Sample,102748,0,"hihatL.wav",100
+Sample,102979,0,"kick.wav",100
+Sample,103210,0,"hihatL.wav",100
+Sample,103325,0,"hihatR.wav",100
+Sample,103441,0,"kick.wav",100
+Sample,103441,0,"hihatR.wav",100
+Sample,103556,0,"hihatR.wav",100
+Sample,103671,0,"hihatL.wav",100
+Sample,103787,0,"hihatR.wav",100
+Sample,103902,0,"kick.wav",100
+Sample,104133,0,"hihatL.wav",100
+Sample,104364,0,"kick.wav",100
+Sample,104594,0,"hihatL.wav",100
+Sample,104825,0,"kick.wav",100
+Sample,105056,0,"hihatL.wav",100
+Sample,105287,0,"kick.wav",100
+Sample,105518,0,"hihatL.wav",100
+Sample,105748,0,"kick.wav",100
+Sample,105979,0,"hihatL.wav",100
+Sample,106210,0,"kick.wav",100
+Sample,106441,0,"hihatL.wav",100
+Sample,106671,0,"kick.wav",100
+Sample,106902,0,"hihatL.wav",100
+Sample,107133,0,"kick.wav",100
+Sample,107364,0,"hihatL.wav",100
+Sample,107594,0,"kick.wav",100
+Sample,107825,0,"hihatL.wav",100
+Sample,108056,0,"kick.wav",100
+Sample,108287,0,"hihatL.wav",100
+Sample,108518,0,"kick.wav",100
+Sample,108748,0,"hihatL.wav",100
+Sample,108979,0,"kick.wav",100
+Sample,109210,0,"hihatL.wav",100
+Sample,109441,0,"kick.wav",100
+Sample,109671,0,"hihatL.wav",100
+Sample,109787,0,"kick.wav",100
+Sample,109844,0,"kick.wav",100
+Sample,109902,0,"kick.wav",100
+Sample,110018,0,"kick.wav",100
+Sample,110133,0,"kick.wav",100
+Sample,110133,0,"hihatL.wav",100
+Sample,110364,0,"kick.wav",100
+Sample,110421,0,"kick.wav",100
+Sample,110479,0,"kick.wav",100
+Sample,110594,0,"hihatL.wav",100
+Sample,110710,0,"kick.wav",100
+Sample,110941,0,"hihatR.wav",100
+Sample,111056,0,"hihatL.wav",100
+Sample,111056,0,"hihatR.wav",100
+Sample,111171,0,"hihatR.wav",100
+Sample,111518,0,"hihatL.wav",100
+Sample,111748,0,"kick.wav",100
+Sample,112441,0,"hihatL.wav",100
+Sample,112671,0,"kick.wav",100
+Sample,114287,0,"hihatL.wav",100
+Sample,114518,0,"kick.wav",100
+Sample,115210,0,"hihatL.wav",100
+Sample,115441,0,"kick.wav",100
+Sample,116133,0,"hihatL.wav",100
+Sample,116364,0,"kick.wav",100
+Sample,117056,0,"hihatL.wav",100
+Sample,117287,0,"kick.wav",100
+Sample,117979,0,"hihatL.wav",100
+Sample,118094,0,"hihatR.wav",100
+Sample,118210,0,"kick.wav",100
+Sample,118210,0,"hihatR.wav",100
+Sample,118902,0,"hihatL.wav",100
+Sample,119133,0,"kick.wav",100
+Sample,119825,0,"hihatL.wav",100
+Sample,120056,0,"kick.wav",100
+Sample,121671,0,"hihatL.wav",100
+Sample,121902,0,"kick.wav",100
+Sample,122594,0,"hihatL.wav",100
+Sample,122825,0,"kick.wav",100
+Sample,123518,0,"hihatL.wav",100
+Sample,123748,0,"kick.wav",100
+Sample,124441,0,"hihatL.wav",100
+Sample,124902,0,"hihatL.wav",100
+Sample,126287,0,"hihatL.wav",100
+Sample,126748,0,"hihatL.wav",100
+Sample,127210,0,"hihatL.wav",100
+Sample,127671,0,"hihatL.wav",100
+Sample,128133,0,"hihatL.wav",100
+Sample,128594,0,"hihatL.wav",100
+Sample,129056,0,"hihatL.wav",100
+Sample,129518,0,"hihatL.wav",100
+Sample,129979,0,"hihatL.wav",100
+Sample,130441,0,"hihatL.wav",100
+Sample,130902,0,"hihatL.wav",100
+Sample,131364,0,"hihatL.wav",100
+Sample,131825,0,"hihatL.wav",100
+Sample,132287,0,"hihatL.wav",100
+Sample,132748,0,"hihatL.wav",100
+Sample,132864,0,"hihatR.wav",100
+Sample,132979,0,"hihatR.wav",100
+Sample,133094,0,"hihatR.wav",100
+Sample,133210,0,"hihatL.wav",100
+Sample,133325,0,"hihatR.wav",100
+Sample,133902,0,"kick.wav",100
+Sample,134825,0,"kick.wav",100
+Sample,135748,0,"kick.wav",100
+Sample,136671,0,"kick.wav",100
+Sample,137594,0,"kick.wav",100
+Sample,138518,0,"kick.wav",100
+Sample,139441,0,"kick.wav",100
+Sample,140248,0,"hihatR.wav",100
+Sample,140364,0,"kick.wav",100
+Sample,140479,0,"hihatR.wav",100
+// Break Periods
+
+[TimingPoints]
+518,461.538461538462,4,1,0,100,1,0
+81748,-100,4,1,0,100,0,1
+111287,-100,4,1,0,100,0,0
+
+[Colours]
+Combo1: 245,193,135,255
+Combo2: 130,251,179,255
+Combo3: 137,204,254,255
+Combo4: 244,253,145,255
+Combo5: 239,69,69,255
+
+[HitObjects]
+36,192,15287.230769230784,1,0,1:0:0:100:
+475,192,126056.46153846166,1,0,1:0:0:100:
