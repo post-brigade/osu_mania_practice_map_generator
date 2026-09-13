@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from .normalize_path import normalize_path
+
 
 def get_cli_arguments(args: list[str]) -> tuple[Path, int, int]:
     if (len(args) != 4):
@@ -12,7 +14,8 @@ def get_cli_arguments(args: list[str]) -> tuple[Path, int, int]:
     if args[2] not in ("1", "2", "3", "4", "5"):
         raise ValueError("Invalid generation type: not 1, 2, 3, 4, or 5")
 
-    map_path = Path(args[3])
+    map_path = normalize_path(args[3])
+    map_path = Path(map_path)
     key_count = int(args[1])
     generation_type = int(args[2])
 
