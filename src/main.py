@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 
 from src.functions import (
     add_chords,
@@ -6,6 +7,8 @@ from src.functions import (
     generate_note_matrix,
     generate_notes_with_timing_points,
     get_cli_arguments,
+    get_difficulty_name,
+    get_new_map_path,
     get_timing_changes,
     get_user_input,
     note_instructions_to_timing_changes,
@@ -19,10 +22,17 @@ def main():
     should_print = True
 
     if len(sys.argv) == 1:
-        map_path, new_map_path, key_count, generation_type = get_user_input()
+        map_path, key_count, generation_type = get_user_input()
 
     else:
-        map_path, new_map_path, key_count, generation_type = get_cli_arguments(sys.argv)
+        map_path, key_count, generation_type = get_cli_arguments(sys.argv)
+
+    difficulty_name = get_difficulty_name(generation_type, key_count)
+
+    new_map_path = get_new_map_path(difficulty_name, map_path)
+
+    if new_map_path.exists():
+        raise ValueError("File exists at output path")
 
     normal_lines, timing_points, notes = read_map(map_path, key_count) # tested
 

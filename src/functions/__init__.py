@@ -14,6 +14,8 @@ from .create_timing_point import create_timing_point
 from .generate_note_matrix import generate_note_matrix
 from .generate_notes_with_timing_points import generate_notes_with_timing_points
 from .get_cli_arguments import get_cli_arguments
+from .get_difficulty_name import get_difficulty_name
+from .get_new_map_path import get_new_map_path
 from .get_timing_changes import get_timing_changes
 from .get_user_input import get_user_input
 from .normalize_path import normalize_path

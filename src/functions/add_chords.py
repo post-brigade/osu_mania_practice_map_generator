@@ -47,14 +47,9 @@ def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
     banned_columns: set[int] = set()
     chord_index = 0
 
-    for i in range(len(notes)):
-        if 0 < i < len(notes) - 1:
-            time_step = notes[i].time - notes[i - 1].time
-            next_step = notes[i + 1].time - notes[i].time
 
-            if next_step > time_step * 4 or math.isclose(next_step, time_step * 4, abs_tol=.1):
-                banned_columns = set()
-                chord_index = 0
+    for i in range(len(notes)):
+        chord_index, banned_columns = check_for_breaks(notes, i, banned_columns, chord_index)
 
         if chord_index % 16 == 0:
             if generation_type in (2, 4):
@@ -117,13 +112,7 @@ def four_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
     test_index = 0
 
     for i in range(len(notes)):
-        if 0 < i < len(notes) - 1:
-            time_step = notes[i].time - notes[i - 1].time
-            next_step = notes[i + 1].time - notes[i].time
-
-            if next_step > time_step * 4 or math.isclose(next_step, time_step * 4, abs_tol=.1):
-                banned_columns = set()
-                chord_index = 0
+        chord_index, banned_columns = check_for_breaks(notes, i, banned_columns, chord_index)
 
         if chord_index % 4 == 0:
             if generation_type in (4, 5):
@@ -165,3 +154,16 @@ def check_time_index(notes_with_chords, banned_columns, note_index, time_index):
         check_time_index(notes_with_chords, banned_columns, note_index - 1, time_index)
 
     return banned_columns
+
+
+def check_for_breaks(notes: list[Note], i: int, banned_columns: set[int], chord_index: int) -> tuple[int, set[int]]:
+    new_banned_columns = banned_columns
+    if 1 < i:
+        time_step = notes[i].time - notes[i - 1].time
+        previous_step = notes[i - 1].time - notes[i - 2].time
+
+        if time_step > previous_step * 4 or math.isclose(previous_step, time_step * 4, abs_tol=.1):
+            new_banned_columns = set()
+            chord_index = 0
+
+    return chord_index, new_banned_columns
