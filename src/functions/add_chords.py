@@ -30,7 +30,7 @@ def add_chord(note: Note, banned_columns: set[int], size_of_chord: int,  key_cou
         next_banned_columns.add(chord_note.column)
         chord.append(chord_note)
     sorted_chord = sorted(chord, key = lambda note: note.column)
-    return sorted_chord, new_banned_columns
+    return sorted_chord, next_banned_columns
 
 
 def create_chord_note(note: Note | LongNote, banned_columns: set[int], key_count = 7) -> Note | LongNote:
@@ -56,10 +56,33 @@ def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
                 banned_columns = set()
                 chord_index = 0
 
-        if chord_index % 4 == 0 and generation_type == 4:
-            chord, banned_columns = add_chord(notes[i], banned_columns, 3, key_count)
+        if chord_index % 8 == 0 and generation_type == 5:
+            chord_size = 4
+            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
             notes_with_chords.extend(chord)
             chord_index += 1
+            continue
+
+        elif chord_index % 4 == 0:
+            if generation_type in (2, 4, 5):
+                chord_size = 3
+            elif generation_type == 3:
+                chord_size = 2
+            else:
+                raise ValueError("Invalid generation value")
+
+            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
+            notes_with_chords.extend(chord)
+            chord_index += 1
+            continue
+
+        elif chord_index % 2 == 0 and generation_type != 2:
+            chord_size = 2
+            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
+            notes_with_chords.extend(chord)
+            chord_index += 1
+            continue
+
         else:
             new_note = copy.copy(notes[i])
             new_note.column = random_column(banned_columns, key_count)
@@ -74,16 +97,38 @@ def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
 def four_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
     key_count = 4
     notes_with_chords:list[Note | LongNote] = []
-    time_index = 0
     banned_columns: set[int] = set()
     chord_index = 0
+    test_index = 0
+
     for i in range(len(notes)):
-        if i % 4 == 0 and generation_type == 4:
-            chord, banned_columns = add_chord(notes[i], banned_columns, 3, key_count)
+        if 0 < i < len(notes) - 1:
+            time_step = notes[i].time - notes[i - 1].time
+            next_step = notes[i + 1].time - notes[i].time
+
+            if next_step > time_step * 4 or math.isclose(next_step, time_step * 4, abs_tol=.1):
+                banned_columns = set()
+                chord_index = 0
+
+        if chord_index % 4 == 0:
+            if generation_type in (4, 5):
+                chord_size = 3
+            elif generation_type in (2, 3):
+                chord_size = 2
+            else:
+                raise ValueError("Invalid generation value")
+
+            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
             notes_with_chords.extend(chord)
-            if chord_index < 9:
-                print(banned_columns)
-                chord_index += 1
+            chord_index += 1
+            continue
+
+        elif chord_index % 2 == 0 and generation_type in (3, 5):
+            chord_size = 2
+            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
+            notes_with_chords.extend(chord)
+            chord_index += 1
+            continue
 
         else:
             new_note = copy.copy(notes[i])
@@ -91,9 +136,7 @@ def four_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
             new_note.x = column_to_x(new_note.column, key_count)
             banned_columns = {new_note.column}
             notes_with_chords.append(new_note)
-            if chord_index < 9:
-                print(banned_columns)
-                chord_index += 1
+            chord_index += 1
 
     return notes_with_chords
 
