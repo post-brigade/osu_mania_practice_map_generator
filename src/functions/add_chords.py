@@ -56,6 +56,21 @@ def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
                 banned_columns = set()
                 chord_index = 0
 
+        if chord_index % 16 == 0:
+            if generation_type in (2, 4):
+                chord_size = 3
+            elif generation_type == 3:
+                chord_size = 4
+            elif generation_type == 5:
+                chord_size = 5
+            else:
+                raise ValueError("Invalid generation value")
+
+            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
+            notes_with_chords.extend(chord)
+            chord_index += 1
+            continue
+
         if chord_index % 8 == 0 and generation_type == 5:
             chord_size = 4
             chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
@@ -64,9 +79,9 @@ def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
             continue
 
         elif chord_index % 4 == 0:
-            if generation_type in (2, 4, 5):
+            if generation_type in (3, 5):
                 chord_size = 3
-            elif generation_type == 3:
+            elif generation_type in (2, 4):
                 chord_size = 2
             else:
                 raise ValueError("Invalid generation value")
@@ -76,7 +91,7 @@ def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
             chord_index += 1
             continue
 
-        elif chord_index % 2 == 0 and generation_type != 2:
+        elif chord_index % 2 == 0 and generation_type in (4, 5):
             chord_size = 2
             chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
             notes_with_chords.extend(chord)

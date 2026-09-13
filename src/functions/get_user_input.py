@@ -11,10 +11,10 @@ def get_user_input() -> tuple[Path, Path, int, int]:
     if key_count == 7:
         density = int(input("Choose density:\n\t"
             "1: stream\n\t"
-            "2: light chordstream: 3 note chords\n\t"
-            "3: light chordstream: dense 2 note chords\n\t"
-            "4: dense chordstream: 3 and 2 note chords\n\t"
-            "5: dense chordstream: 3 and 4 note chords\n"
+            "2: light chordstream\n\t"
+            "3: less light chordstream\n\t"
+            "4: dense-ish chordstream\n\t"
+            "5: dense chordstream\n"
         ))
     elif key_count == 4:
         density = int(input("Choose density:\n\t"
