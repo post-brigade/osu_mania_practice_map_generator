@@ -9,10 +9,10 @@ def get_cli_arguments(args: list[str]) -> tuple[Path, int, int]:
         raise ValueError("Format: python3 -m src.main <key count> <generation type> <map input>")
 
     if args[1] not in ("4", "7"):
-        raise ValueError("Invalid key count: not  4 or 7")
+        raise ValueError("Invalid key count: not 4 or 7")
 
     if args[2] not in ("1", "2", "3", "4", "5"):
-        raise ValueError("Invalid generation type: not 1, 2, 3, 4, or 5")
+        raise ValueError("Invalid density option: not 1, 2, 3, 4, or 5")
 
     map_path = normalize_path(args[3])
     map_path = Path(map_path)

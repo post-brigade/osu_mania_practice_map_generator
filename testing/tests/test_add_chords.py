@@ -34,11 +34,11 @@ class Test(unittest.TestCase):
         generated_notes = generate_notes_with_timing_points(final_timing_changes, notes[-1], KEY_COUNT)
         notes_with_chords = add_chords(generated_notes, generation_type, KEY_COUNT)
 
-        self.assertTrue(chord_is_valid(notes_with_chords[0:4]))
-        self.assertTrue(chord_is_valid(notes_with_chords[5:7]))
-        self.assertTrue(chord_is_valid(notes_with_chords[8:11]))
-        self.assertTrue(chord_is_valid(notes_with_chords[12:14]))
-        self.assertTrue(chord_is_valid(notes_with_chords[15:19]))
+        self.assertTrue(chord_is_valid(notes_with_chords[0:5]))
+        self.assertTrue(chord_is_valid(notes_with_chords[6:8]))
+        self.assertTrue(chord_is_valid(notes_with_chords[9:12]))
+        self.assertTrue(chord_is_valid(notes_with_chords[13:15]))
+        self.assertTrue(chord_is_valid(notes_with_chords[16:20]))
 
 if __name__ == "__main__":
     unittest.main()

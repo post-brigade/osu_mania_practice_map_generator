@@ -48,11 +48,11 @@ def check_note_matrix(note_matrix: list[list[str]], notes: list[Note]) -> bool |
 
     barlines_correct = all([first_barline, second_barline, non_barlines])
 
-    line_1 = check_notes(note_matrix[0], notes[0:4])
-    line_2 = check_notes(note_matrix[1], [notes[4]])
-    line_3 = check_notes(note_matrix[2], notes[5:7])
-    line_4 = check_notes(note_matrix[3], [notes[7]])
-    line_5 = check_notes(note_matrix[4], notes[8:11])
+    line_1 = check_notes(note_matrix[0], notes[0:5])
+    line_2 = check_notes(note_matrix[1], [notes[5]])
+    line_3 = check_notes(note_matrix[2], notes[6:8])
+    line_4 = check_notes(note_matrix[3], [notes[8]])
+    line_5 = check_notes(note_matrix[4], notes[9:12])
 
     note_placement_correct = all([line_1, line_2, line_3, line_4, line_5])
 

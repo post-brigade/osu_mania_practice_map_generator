@@ -15,59 +15,38 @@ MAP_PATH = MAP_INPUT_DIR / "test_get_user_arguments" / "test_a.osu"
 class Test(unittest.TestCase):
 
     def test_a_get_paths(self):
-        print("\nget_user_arguments tests")
-        no_input = str(MAP_INPUT_DIR / "test_get_user_arguments" / "fake.osu")
-        incorrect_input = str(MAP_INPUT_DIR / "test_get_user_arguments" / "test_a.txt")
-        existing_output = str(MAP_OUTPUT_DIR / "test_get_user_arguments" /"exists.osu")
-        no_output_folder = str(MAP_OUTPUT_DIR / "fake_folder" /"exists.osu")
+        print("\nget_cli_arguments tests")
+        no_input = str(MAP_INPUT_DIR / "test_get_cli_arguments" / "fake.osu")
+        incorrect_input = str(MAP_INPUT_DIR / "test_get_cli_arguments" / "test_a.txt")
 
-        valid_input = str(MAP_INPUT_DIR / "test_get_user_arguments" / "test_a.osu")
-        valid_output = str(MAP_OUTPUT_DIR / "test_get_user_arguments" /"test_a_output.osu")
+        valid_input = str(MAP_INPUT_DIR / "test_get_cli_arguments" / "test_a.osu")
 
         valid_args = [
             " ",
-            valid_input,
-            valid_output,
             "4",
-            "1"
-        ]
-        invalid_args = [
-            " ",
+            "1",
             valid_input,
-            existing_output,
-            "4",
-            "1"
         ]
         invalid_args_2 = [
             " ",
-            no_input,
-            valid_output,
             "7",
-            "2"
+            "2",
+            no_input
         ]
         invalid_args_3 = [
             " ",
-            incorrect_input,
-            valid_output,
             "7",
-            "3"
-        ]
-        invalid_args_4 = [
-            " ",
-            valid_input,
-            no_output_folder,
-            "7",
-            "1"
+            "3",
+            incorrect_input
         ]
         invalid_args_5 = [
             " ",
-            valid_input,
-            valid_output,
             "7",
-            "6"
+            "6",
+            valid_input,
         ]
 
-        w, x, y, z = get_cli_arguments(valid_args)
+        x, y, z = get_cli_arguments(valid_args)
 
         # inactive for testing
         # with self.assertRaisesRegex(ValueError, "File exists at output path"):
@@ -79,13 +58,8 @@ class Test(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid input, need .osu file"):
             get_cli_arguments(invalid_args_3)
 
-        with self.assertRaisesRegex(ValueError, "Output directory does not exist"):
-            get_cli_arguments(invalid_args_4)
-
-        with self.assertRaisesRegex(ValueError, "Invalid generation type: 1: stream, 2: light chordstream, 3: dense chordstream"):
+        with self.assertRaisesRegex(ValueError, "Invalid density option: not 1, 2, 3, 4, or 5"):
             get_cli_arguments(invalid_args_5)
-
-
 
 
 if __name__ == "__main__":

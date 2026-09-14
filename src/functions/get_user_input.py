@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 from .normalize_path import normalize_path
@@ -10,19 +9,19 @@ def get_user_input() -> tuple[Path, int, int]:
 
     if key_count == 7:
         density = int(input("Choose density:\n\t"
-            "1: stream\n\t"
-            "2: light chordstream\n\t"
-            "3: less light chordstream\n\t"
-            "4: dense-ish chordstream\n\t"
-            "5: dense chordstream\n"
+            "1: Stream\n\t"
+            "2: Light Chordstream\n\t"
+            "3: Light-ish Chordstream\n\t"
+            "4: Dense-ish Chordstream\n\t"
+            "5: Dense Chordstream\n"
         ))
     elif key_count == 4:
         density = int(input("Choose density:\n\t"
-            "1: stream\n\t"
-            "2: light jumpstream\n\t"
-            "3: dense jumpstream\n\t"
-            "4: light handstream\n\t"
-            "5: dense handstream\n"
+            "1: Stream\n\t"
+            "2: Light Jumpstream\n\t"
+            "3: Dense Jumpstream\n\t"
+            "4: Light Handstream\n\t"
+            "5: Dense Handstream\n"
         ))
     else:
         raise ValueError("Invalid key count")
@@ -34,11 +33,6 @@ def get_user_input() -> tuple[Path, int, int]:
     map_path = normalize_path(path_input)
 
     if not map_path.is_file() or map_path.suffix != ".osu":
-        raise ValueError("Invalid input, need .osu file")
-
-    # commented for debugging
-    # if os.path.exists(new_map_path):
-    #     raise ValueError("File exists at output path")
-
+        raise ValueError("Invalid input: need .osu file, or unexpected character in file name. i.e. \"!\"")
 
     return map_path, key_count, density

@@ -8,7 +8,7 @@ from .create_note import create_note
 from .create_timing_point import create_timing_point
 
 
-def read_map(map_path: Path, key_count: int) -> tuple[list[list[str]], list[TimingPoint], list[Note | LongNote]]:
+def read_map(map_path: Path, key_count: int, difficulty_name: str | None = None) -> tuple[list[list[str]], list[TimingPoint], list[Note | LongNote]]:
     normal_note_pattern = re.compile(r"\d+,\d+,\d+(?:\.\d+)?,1,\d,\d:\d:\d:\d{1,3}:")
     long_note_pattern = re.compile(r"\d+,\d+,\d+(?:\.\d+)?,128,\d,\d+(?:\.\d+)?,\d:\d:\d:\d{1,3}:")
     timing_point_pattern = re.compile(r"\d+,-?\d+(?:\.\d+)?,\d{1},\d{1},\d,\d{1,3},\d,\d{1,2}")
@@ -22,10 +22,6 @@ def read_map(map_path: Path, key_count: int) -> tuple[list[list[str]], list[Timi
         for line in map:
             line_stripped = line.strip()
             line_split = line_stripped.split(",")
-
-            if line == "":
-                normal_lines.append([line])
-                continue
             match_t = timing_point_pattern.search(line)
             match_n = normal_note_pattern.search(line)
             match_ln = long_note_pattern.search(line)
@@ -43,6 +39,8 @@ def read_map(map_path: Path, key_count: int) -> tuple[list[list[str]], list[Timi
                 timing_points.append(timing_point)
 
             else:
+                if line_split[0].startswith("Version:") and difficulty_name:
+                    line_split = [f"Version: {difficulty_name}"]
                 normal_lines.append(line_split)
 
         return normal_lines, timing_points, notes

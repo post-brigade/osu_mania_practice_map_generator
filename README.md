@@ -1,37 +1,41 @@
+
+
 Run from root of project: 
 
-$python3 -m src.main \<path to input map\> \<path to output\> \<key count\> \<density setting\> 
+$python3 -m src.main \<path to input map\> \<key count\> \<density setting\> 
 
 Or run with main.sh:
 
-Follow the prompts, will accept windows and linux paths (if using WSL)
+Follow the prompts, will accept windows and linux paths (if using WSL).
 
-Key count: 4 or 7
+Key count: 4 or 7.
 
-Density setting: 1 to 5: 1 is single stream, 5 is dense handstream for 4k, dense chordstream for 7k
+Density setting: 
 
-Works off a timed map and reads notes on the map as instructions by column.
+  7k: 1: Stream 2: Light Chordstream 3: Light-ish Chordstream 4: Dense-ish Chordstream 5: Dense Chordstream
+
+  4k: 1: Stream 2: Light Jumpstream 3: Dense Jumpstream 4: Light Handstream 5: Dense Handstream 
+
+The map to generate from should be timed, with no notes except intended instructions.
 
 Note generation starts out off.
 
-Default generation is 16th notes at maps bpm. (1/4 snap)
+A note in:
 
-Tracks uninherited timing points, but unsure how it will handle lots of tempo changes.
+  Column 1: Starts note generation at 1/4 snap.
 
-Notes in column:
+  Column 2: Stops note generation.
 
-  1: start generation
-  
-  2: stop generation
-  
-  3: double bpm
-  
-  4: halve bpm
+  Column 3: Doubles generation bpm.
 
-Generates sample of map in console.
+  Column 3: Halves generation bpm.
 
-Patterning is currently based on 4/4 meter; odd meters will have accents in weird spots.
+Final note in map ends generation. Can be any column.
 
-Doesn't update metadata yet.
+A sample of the map will be generated in the console.
+
+Patterning is based on 4/4 meter.
+
+The generated map is saved in the same folder as the input map, with the density setting tacked on the front of the file name.
 
 Long note support someday. Maybe.

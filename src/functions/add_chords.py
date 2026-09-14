@@ -109,7 +109,6 @@ def four_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
     notes_with_chords:list[Note | LongNote] = []
     banned_columns: set[int] = set()
     chord_index = 0
-    test_index = 0
 
     for i in range(len(notes)):
         chord_index, banned_columns = check_for_breaks(notes, i, banned_columns, chord_index)
