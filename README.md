@@ -28,7 +28,7 @@ A note in:
 
   Column 3: Doubles generation bpm.
 
-  Column 3: Halves generation bpm.
+  Column 4: Halves generation bpm.
 
 Final note in map ends generation. Can be any column.
 
