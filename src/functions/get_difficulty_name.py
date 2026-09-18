@@ -1,6 +1,12 @@
+import math
 
 
-def get_difficulty_name(generation_type, key_count) -> str:
+def get_difficulty_name(generation_type, key_count, density_rating) -> str:
+    if not math.isclose(density_rating, 0, abs_tol=0.01):
+        difficulty = f"[7k Custom density {density_rating}]"
+        print(difficulty)
+        return difficulty
+
     if not generation_type or not (1 <= generation_type <= 5):
         raise ValueError("Invalid generation type")
 

@@ -20,14 +20,27 @@ from src.functions import (
 
 def main():
     should_print = True
+    chord_tuples = None
+    density_rating = 0
 
     if len(sys.argv) == 1:
         map_path, key_count, generation_type = get_user_input()
 
     else:
-        map_path, key_count, generation_type = get_cli_arguments(sys.argv)
+        map_path, key_count, generation_type, chord_tuples = get_cli_arguments(sys.argv)
 
-    difficulty_name = get_difficulty_name(generation_type, key_count)
+    if chord_tuples:
+        total_density = (
+            chord_tuples[0][1]
+            + chord_tuples[1][1]
+            + 2 * chord_tuples[2][1]
+            + 4 * chord_tuples[3][1]
+            + 8 * chord_tuples[4][1]
+        )
+        density_rating = round(((total_density - 16 ) * (9 / 40)) + 1, 2)
+        print(density_rating)
+
+    difficulty_name = get_difficulty_name(generation_type, key_count, density_rating)
 
     new_map_path = get_new_map_path(difficulty_name, map_path)
 
@@ -46,7 +59,7 @@ def main():
 
     notes_to_map = generate_notes_with_timing_points(final_timing_changes, notes[-1], key_count)
 
-    notes_to_map = add_chords(notes_to_map, generation_type, key_count)
+    notes_to_map = add_chords(notes_to_map, generation_type, key_count, chord_tuples)
 
     generate_note_matrix(notes_to_map, final_timing_changes, should_print, key_count)
 

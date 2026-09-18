@@ -6,16 +6,118 @@ from src.classes import LongNote, Note
 from .column_and_bpm_helpers import column_to_x, random_column
 
 
-def add_chords(notes: list[Note | LongNote], generation_type: int, key_count) -> list[Note | LongNote]:
-    if generation_type == 1:
+def add_chords(notes: list[Note | LongNote], generation_type: int, key_count, chord_tuples: list[tuple[int, int]] | None = None) -> list[Note | LongNote]:
+    if generation_type == 1 and not chord_tuples:
         return notes
-
-    if key_count == 7:
+    if key_count == 7 and not chord_tuples:
         notes_with_chords = seven_key_chords(notes, generation_type)
+    elif key_count == 7:
+        notes_with_chords = seven_key_gen_string_chords(notes, chord_tuples)
     elif key_count == 4:
         notes_with_chords = four_key_chords(notes, generation_type)
     else:
         raise ValueError("Invalid key count")
+
+    return notes_with_chords
+
+
+def seven_key_gen_string_chords(notes: list[Note], chord_tuples: list[tuple[int, int]] | None = None):
+    if not chord_tuples:
+        return notes
+
+    key_count = 7
+    notes_with_chords:list[Note | LongNote] = []
+    banned_columns: set[int] = set()
+    chord_index = 0
+
+    for i in range(len(notes)):
+        chord_index, banned_columns = check_for_breaks(notes, i, banned_columns, chord_index)
+
+        if chord_index % 16 == 0:
+            chord_size = chord_tuples[0][1]
+        elif chord_index % 8 == 0:
+            chord_size = chord_tuples[1][1]
+        elif chord_index % 4 == 0:
+            chord_size = chord_tuples[2][1]
+        elif chord_index % 2 == 0:
+            chord_size = chord_tuples[3][1]
+        else:
+            chord_size = chord_tuples[4][1]
+
+        chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
+        notes_with_chords.extend(chord)
+        chord_index += 1
+
+    return notes_with_chords
+
+def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
+    key_count = 7
+    notes_with_chords:list[Note | LongNote] = []
+    banned_columns: set[int] = set()
+    chord_index = 0
+
+    for i in range(len(notes)):
+        chord_index, banned_columns = check_for_breaks(notes, i, banned_columns, chord_index)
+
+        if chord_index % 16 == 0:
+            if generation_type in (2, 4):
+                chord_size = 3
+            elif generation_type == 3:
+                chord_size = 4
+            elif generation_type == 5:
+                chord_size = 5
+            else:
+                raise ValueError("Invalid generation value")
+
+        if chord_index % 8 == 0 and generation_type == 5:
+            chord_size = 4
+
+        elif chord_index % 4 == 0:
+            if generation_type in (3, 5):
+                chord_size = 3
+            elif generation_type in (2, 4):
+                chord_size = 2
+            else:
+                raise ValueError("Invalid generation value")
+
+        elif chord_index % 2 == 0 and generation_type in (4, 5):
+            chord_size = 2
+        else:
+            chord_size = 1
+
+        chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
+        notes_with_chords.extend(chord)
+        chord_index += 1
+
+    return notes_with_chords
+
+
+def four_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
+    key_count = 4
+    notes_with_chords:list[Note | LongNote] = []
+    banned_columns: set[int] = set()
+    chord_index = 0
+
+    for i in range(len(notes)):
+        chord_index, banned_columns = check_for_breaks(notes, i, banned_columns, chord_index)
+
+        if chord_index % 4 == 0:
+            if generation_type in (4, 5):
+                chord_size = 3
+            elif generation_type in (2, 3):
+                chord_size = 2
+            else:
+                raise ValueError("Invalid generation value")
+
+        elif chord_index % 2 == 0 and generation_type in (3, 5):
+            chord_size = 2
+
+        else:
+            chord_size = 1
+
+        chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
+        notes_with_chords.extend(chord)
+        chord_index += 1
 
     return notes_with_chords
 
@@ -39,109 +141,6 @@ def create_chord_note(note: Note | LongNote, banned_columns: set[int], key_count
     new_note.x = column_to_x(new_note.column, key_count)
 
     return new_note
-
-
-def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
-    key_count = 7
-    notes_with_chords:list[Note | LongNote] = []
-    banned_columns: set[int] = set()
-    chord_index = 0
-
-
-    for i in range(len(notes)):
-        chord_index, banned_columns = check_for_breaks(notes, i, banned_columns, chord_index)
-
-        if chord_index % 16 == 0:
-            if generation_type in (2, 4):
-                chord_size = 3
-            elif generation_type == 3:
-                chord_size = 4
-            elif generation_type == 5:
-                chord_size = 5
-            else:
-                raise ValueError("Invalid generation value")
-
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            notes_with_chords.extend(chord)
-            chord_index += 1
-            continue
-
-        if chord_index % 8 == 0 and generation_type == 5:
-            chord_size = 4
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            notes_with_chords.extend(chord)
-            chord_index += 1
-            continue
-
-        elif chord_index % 4 == 0:
-            if generation_type in (3, 5):
-                chord_size = 3
-            elif generation_type in (2, 4):
-                chord_size = 2
-            else:
-                raise ValueError("Invalid generation value")
-
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            notes_with_chords.extend(chord)
-            chord_index += 1
-            continue
-
-        elif chord_index % 2 == 0 and generation_type in (4, 5):
-            chord_size = 2
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            notes_with_chords.extend(chord)
-            chord_index += 1
-            continue
-
-        else:
-            new_note = copy.copy(notes[i])
-            new_note.column = random_column(banned_columns, key_count)
-            new_note.x = column_to_x(new_note.column, key_count)
-            banned_columns = {new_note.column}
-            notes_with_chords.append(new_note)
-            chord_index += 1
-
-    return notes_with_chords
-
-
-def four_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
-    key_count = 4
-    notes_with_chords:list[Note | LongNote] = []
-    banned_columns: set[int] = set()
-    chord_index = 0
-
-    for i in range(len(notes)):
-        chord_index, banned_columns = check_for_breaks(notes, i, banned_columns, chord_index)
-
-        if chord_index % 4 == 0:
-            if generation_type in (4, 5):
-                chord_size = 3
-            elif generation_type in (2, 3):
-                chord_size = 2
-            else:
-                raise ValueError("Invalid generation value")
-
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            notes_with_chords.extend(chord)
-            chord_index += 1
-            continue
-
-        elif chord_index % 2 == 0 and generation_type in (3, 5):
-            chord_size = 2
-            chord, banned_columns = add_chord(notes[i], banned_columns, chord_size, key_count)
-            notes_with_chords.extend(chord)
-            chord_index += 1
-            continue
-
-        else:
-            new_note = copy.copy(notes[i])
-            new_note.column = random_column(banned_columns, key_count)
-            new_note.x = column_to_x(new_note.column, key_count)
-            banned_columns = {new_note.column}
-            notes_with_chords.append(new_note)
-            chord_index += 1
-
-    return notes_with_chords
 
 
 def check_time_index(notes_with_chords, banned_columns, note_index, time_index):
