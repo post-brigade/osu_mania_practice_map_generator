@@ -2,7 +2,7 @@
 
 Run from root of project: 
 
-$python3 -m src.main \<path to input map\> \<key count\> \<density setting\> 
+$python3 -m src.main \<key count\> \<density setting\> \<path to input map\> \<\(optional\) density string\>
 
 Or run with main.sh:
 
@@ -13,6 +13,8 @@ Key count: 4 or 7.
 Density setting: 
 
   7k: 1: Stream 2: Light Chordstream 3: Light-ish Chordstream 4: Dense-ish Chordstream 5: Dense Chordstream
+
+    0: allows for custom density string , format "#####". Represents chord size every 16, 8, 4, 2, and 1 note(s).
 
   4k: 1: Stream 2: Light Jumpstream 3: Dense Jumpstream 4: Light Handstream 5: Dense Handstream 
 
