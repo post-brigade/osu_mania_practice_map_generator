@@ -1,14 +1,10 @@
 import unittest
-from pathlib import Path
 
+from constants_for_testing import (
+    MAP_INPUT_DIR,
+)
 from src.classes import *
 from src.functions import *
-
-TESTING_HOME_DIR = Path(__file__).resolve().parent.parent
-TEST_DIR = TESTING_HOME_DIR  / "tests"
-MAP_INPUT_DIR = TESTING_HOME_DIR  / "test_maps" / "read"
-MAP_OUTPUT_DIR = TESTING_HOME_DIR  / "test_maps" / "write"
-KEY_COUNT = 7
 
 MAP_PATH = MAP_INPUT_DIR / "test_get_user_arguments" / "test_a.osu"
 
@@ -47,10 +43,6 @@ class Test(unittest.TestCase):
         ]
 
         w, x, y, z = get_cli_arguments(valid_args)
-
-        # inactive for testing
-        # with self.assertRaisesRegex(ValueError, "File exists at output path"):
-        #     get_user_arguments(invalid_args)
 
         with self.assertRaisesRegex(ValueError, "Invalid input, need .osu file"):
             get_cli_arguments(invalid_args_2)

@@ -1,15 +1,13 @@
 import os
 import unittest
-from pathlib import Path
 
+from constants_for_testing import (
+    KEY_COUNT,
+    MAP_INPUT_DIR,
+)
 from src.classes import *
 from src.functions import *
 
-TESTING_HOME_DIR = Path(__file__).resolve().parent.parent
-TEST_DIR = TESTING_HOME_DIR  / "tests"
-MAP_INPUT_DIR = TESTING_HOME_DIR  / "test_maps" / "read"
-MAP_OUTPUT_DIR= TESTING_HOME_DIR  / "test_maps" / "write"
-KEY_COUNT = 7
 
 def simple_read_map(map_path):
     map_lines: list[str] = []
@@ -28,7 +26,7 @@ class Test(unittest.TestCase):
         print("\nwrite_map tests")
 
         map_path = MAP_INPUT_DIR / "test_write_map" / "test_a.osu"
-        new_map_path = MAP_OUTPUT_DIR / "test_write_map" / "test_a.osu"
+        new_map_path = MAP_INPUT_DIR / "test_write_map" / "test_a_temp_output.osu"
         normal_lines, timing_points, notes = read_map(map_path, KEY_COUNT)
 
         comparison_map = simple_read_map(map_path)
