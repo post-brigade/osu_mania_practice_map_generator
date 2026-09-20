@@ -12,11 +12,15 @@ Key count: 4 or 7.
 
 Density setting: 
 
-  7k: 1: Stream 2: Light Chordstream 3: Light-ish Chordstream 4: Dense-ish Chordstream 5: Dense Chordstream
+  7k: 
+
+    1: Stream 2: Light Chordstream 3: Light-ish Chordstream 4: Dense-ish Chordstream 5: Dense Chordstream
 
     0: allows for custom density string , format "#####". Represents chord size every 16, 8, 4, 2, and 1 note(s).
 
-  4k: 1: Stream 2: Light Jumpstream 3: Dense Jumpstream 4: Light Handstream 5: Dense Handstream 
+  4k: 
+
+    1: Stream 2: Light Jumpstream 3: Dense Jumpstream 4: Light Handstream 5: Dense Handstream 
 
 The map to generate from should be timed, with no notes except intended instructions.
 
