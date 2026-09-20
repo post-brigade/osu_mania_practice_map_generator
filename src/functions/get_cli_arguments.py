@@ -6,16 +6,19 @@ from .normalize_path import normalize_path
 
 def get_cli_arguments(args: list[str]) -> tuple[Path, int, int, list[tuple[int, int]]]:
     if (len(args) not in (4, 5)):
-        raise ValueError("Format: python3 -m src.main <key count> <generation type> <map input> <(optional) density string>")
+        raise ValueError("Format: python3 -m src.main <key count> <density setting> <map input> <density string (if density setting is 0)>")
 
     if args[1] not in ("4", "7"):
         raise ValueError("Invalid key count: not 4 or 7")
 
-    if args[2] not in ("1", "2", "3", "4", "5"):
-        raise ValueError("Invalid density option: not 1, 2, 3, 4, or 5")
+    if args[2] not in ("0", "1", "2", "3", "4", "5"):
+        raise ValueError("Invalid density option: should be 1 to 5, 0 for custom")
+
+    if len(args) == 5 and args[2] != "0":
+        raise ValueError("Set density setting to 0 for advanced setting")
 
     if len(args) == 5 and args[1] != "7":
-        raise ValueError("Density string only for 7k")
+        raise ValueError("Advanced density setting only for 7k")
 
     if len(args) == 5 and len(args[4]) != 5:
         raise ValueError("Invalid density string format: 5 numbers, choosing chord size every 16, 8, 4, 2, and 1 note(s). must be at least 1")

@@ -7,6 +7,8 @@ from .column_and_bpm_helpers import column_to_x, random_column
 
 
 def add_chords(notes: list[Note | LongNote], generation_type: int, key_count, chord_tuples: list[tuple[int, int]] | None = None) -> list[Note | LongNote]:
+    if generation_type == 0 and not chord_tuples:
+        raise ValueError("Custom generation setting but no chord tuples")
     if generation_type == 1 and not chord_tuples:
         return notes
     if key_count == 7 and not chord_tuples:

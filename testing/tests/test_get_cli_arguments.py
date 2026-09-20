@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
             valid_input,
         ]
 
-        x, y, z = get_cli_arguments(valid_args)
+        w, x, y, z = get_cli_arguments(valid_args)
 
         # inactive for testing
         # with self.assertRaisesRegex(ValueError, "File exists at output path"):
@@ -58,7 +58,7 @@ class Test(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid input, need .osu file"):
             get_cli_arguments(invalid_args_3)
 
-        with self.assertRaisesRegex(ValueError, "Invalid density option: not 1, 2, 3, 4, or 5"):
+        with self.assertRaisesRegex(ValueError, "Invalid density option: should be 1 to 5, 0 for custom"):
             get_cli_arguments(invalid_args_5)
 
 
