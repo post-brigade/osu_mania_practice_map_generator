@@ -71,7 +71,7 @@ def seven_key_chords(notes: list[Note], generation_type: int) -> list[Note]:
             else:
                 raise ValueError("Invalid generation value")
 
-        if chord_index % 8 == 0 and generation_type == 5:
+        elif chord_index % 8 == 0 and generation_type == 5:
             chord_size = 4
 
         elif chord_index % 4 == 0:
