@@ -3,7 +3,7 @@ import math
 
 def get_difficulty_name(generation_type, key_count, density_rating) -> str:
     if not math.isclose(density_rating, 0, abs_tol=0.01):
-        difficulty = f"[7k Custom density {density_rating}]"
+        difficulty = f"[7k Bursty Custom density {density_rating}]"
         print(difficulty)
         return difficulty
 
@@ -21,11 +21,11 @@ def get_difficulty_name(generation_type, key_count, density_rating) -> str:
 
     elif key_count == 7:
         difficulties = [
-            "[7k Stream]",
-            "[7k Light Chordstream]",
-            "[7k Light-ish Chordstream]",
-            "[7k Dense-ish Chordstream]",
-            "[7k Dense Chordstream]",
+            "[7k Bursty Stream]",
+            "[7k Bursty Light Chordstream]",
+            "[7k Bursty Light-ish Chordstream]",
+            "[7k Bursty Dense-ish Chordstream]",
+            "[7k Bursty Dense Chordstream]",
         ]
     else:
         raise ValueError("Invalid key count")
